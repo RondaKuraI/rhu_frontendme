@@ -3,11 +3,11 @@
       <v-navigation-drawer v-model="drawer" color="teal-accent-4">
         <v-img src="https://i.pinimg.com/564x/c2/c9/3a/c2c93a4b265f925c0d23188b36073a87.jpg" class="pa-4" max-height="200"
               cover>
-            <div class="text-center">
+            <div class="text-center mt-4">
                 <v-avatar class="mb-4" color="grey-darken-1" size="64">
                     <v-img aspect-ratio="30" src="https://i.pinimg.com/564x/c0/30/a6/c030a61c8803bb91d21080796919d6df.jpg"/>
                 </v-avatar>
-                <h4>User Panel</h4>
+                <h2 class="text-yellow-lighten-5">User Panel</h2>
             </div>
         </v-img>
 
@@ -32,7 +32,7 @@
       >
         <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-toolbar-title>Hakdog</v-toolbar-title>
+        <v-toolbar-title>Hello, User</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
