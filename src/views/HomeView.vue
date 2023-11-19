@@ -103,7 +103,12 @@
 
   export default {
     data: () => ({
-      step: 1
+      step: 1,
+      return: {
+        email: "",
+        password: "",
+        errorMsg: "",
+      }
     }),
     propos: {
       source: String
