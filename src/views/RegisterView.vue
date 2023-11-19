@@ -44,10 +44,10 @@
                                 @click:append-inner="passwordShow = !passwordShow"
                             />
                             <v-checkbox label="I accept the Terms & Conditions" class="mt-n4" color="teal-accent-4"></v-checkbox>
-                            <v-btn type="submit" block color="teal-accent-4">Login</v-btn>
+                            <v-btn type="submit" block color="teal-accent-4">Register</v-btn>
                         </v-card-text>
                         <h4> Already have an account?
-                        <a href="/login">Sign In</a>
+                        <a href="/">Sign In</a>
                         </h4>
                     </v-form>
                 </v-card>

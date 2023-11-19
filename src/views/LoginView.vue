@@ -31,7 +31,7 @@
                                 @click:append-inner="passwordShow = !passwordShow"
                             />
                             <v-switch label="Remember Me" color="teal-accent-4"></v-switch>
-                            <v-btn type="submit" block color="teal-accent-4" href="/admin">Login</v-btn>
+                            <v-btn type="submit" block color="teal-accent-4" href="/dashboard">Login</v-btn>
                         </v-card-text>
                         <h4> Dont have an account yet?
                         <a href="/register">Sign Up</a>
