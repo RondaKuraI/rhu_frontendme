@@ -262,11 +262,11 @@
 
                 <v-card-actions>
                 <v-spacer></v-spacer>
-                  <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
+                  <v-btn color="red-darken-1" variant="elevated" @click="dialog = false" class="mb-4">
                     Close
                   </v-btn>
                   <v-btn
-                    color="blue-darken-1" variant="text" @click="dialog = false">
+                    color="teal-accent-4" variant="elevated" @click="dialog = false" class="mb-4">
                     Save
                   </v-btn>
               </v-card-actions>
@@ -293,7 +293,29 @@
               <td>zahasanko@gmail.com</td>
               <td>14</td>
               <td>
-                <v-btn variant="elevated" color="teal-darken-4" class="mr-2" >Edit</v-btn>
+                <v-dialog width="600px" transition="dialog-top-transition">
+                  
+                  <template #activator="{ props }">
+                    <v-btn v-bind="props" variant="elevated" color="teal-darken-4" class="mr-2">Edit</v-btn>
+                  </template>
+                  <template v-slot:default="{ isActive }">
+                    <v-card>
+                      <v-toolbar
+                      color="primary"
+                      title="Hakdog from the top"
+                    ></v-toolbar>
+                      <v-card-text>
+                        wefwwefw
+                      </v-card-text>
+                      <v-card-actions class="justify-end">
+                        <v-btn
+                          variant="text"
+                          @click="isActive.value = false"
+                        >Close</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                  </template>
+                </v-dialog>
                 <v-btn variant="elevated" color="red-accent-4" >Delete</v-btn>
               </td>
             </tr>
@@ -303,7 +325,16 @@
               <td>shimada@gmail.com</td>
               <td>Unknown</td>
               <td>
-                <v-btn variant="elevated" color="teal-darken-4" class="mr-2" >Edit</v-btn>
+                <v-dialog width="600px">
+                  <template #activator="{ props }">
+                    <v-btn v-bind="props" variant="elevated" color="teal-darken-4" class="mr-2">Edit</v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-text>
+                      wefwwefw
+                    </v-card-text>
+                  </v-card>
+                </v-dialog>
                 <v-btn variant="elevated" color="red-accent-4" >Delete</v-btn>
               </td>
             </tr>

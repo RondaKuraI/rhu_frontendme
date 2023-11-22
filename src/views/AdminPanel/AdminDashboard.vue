@@ -7,7 +7,7 @@
                   <v-avatar class="mb-4" color="grey-darken-1" size="64">
                       <v-img aspect-ratio="30" src="https://i.pinimg.com/564x/c0/30/a6/c030a61c8803bb91d21080796919d6df.jpg"/>
                   </v-avatar>
-                  <h2 class="text-yellow-lighten-5">Staff Panel</h2>
+                  <h2 class="text-yellow-lighten-5">Admin Panel</h2>
               </div>
           </v-img>
   
@@ -80,7 +80,7 @@
   
       <v-main>
       <v-container>
-        <h1 class="hidden-md-only text-h5 text-lg-h3 text-black px-4 py-2 mb-2">Dashboard</h1>
+        <h1 class="hidden-md-only text-h4 text-lg-h3 text-black px-4 py-2 mb-2">Dashboard</h1>
       </v-container>
       <v-container>
         <v-row>

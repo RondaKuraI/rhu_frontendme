@@ -19,16 +19,6 @@
           <v-list-item to="/staff-dashboard/appointment" prepend-icon="mdi-calendar">Appointment</v-list-item>
           <v-list-item to="/staff-dashboard/patient" prepend-icon="mdi-folder">Patient</v-list-item>
           <v-list-item to="/staff-dashboard/service" prepend-icon="mdi-folder">Service</v-list-item>
-          <!--
-          <v-list-group value="Hakdog">
-            <template #activator="{props}">
-              <v-list-item v-bind="props" prepend-icon="mdi-account-circle">Users</v-list-item>
-            </template>
-            <v-list-item prepend-icon="mdi-folder">Me</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">Myself</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">I</v-list-item>
-          </v-list-group>
-          -->
         </v-list>
           
         <template v-slot:append>
