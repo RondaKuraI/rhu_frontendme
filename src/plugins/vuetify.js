@@ -11,5 +11,15 @@ export default createVuetify({
   // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
   icons: {
     iconfont: 'fa' || 'md',
+  },
+  theme: {
+    themes: {
+      light: {
+        colors:{
+          primary: '#1867C0',
+          secondary: '#5CBBF6',
+        }
+      }
+    }
   }
 })
