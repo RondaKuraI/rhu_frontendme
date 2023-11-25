@@ -39,7 +39,7 @@
   -->
   <nav>
     
-    <v-toolbar app color="teal-accent-4">
+    <v-toolbar app color="teal">
       <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase">
         <span class="font-weight-light">Medi</span>
@@ -79,7 +79,7 @@
       </template>
     </v-toolbar>
 
-    <v-navigation-drawer v-model="isDrawerOpen" color="teal-accent-4">
+    <v-navigation-drawer v-model="isDrawerOpen" color="teal">
       <v-img src="https://i.pinimg.com/564x/c2/c9/3a/c2c93a4b265f925c0d23188b36073a87.jpg" class="pa-4" max-height="200"
               cover>
             <div class="text-center mt-4">

@@ -3,13 +3,12 @@
     <NavBar />
     
     <v-container>
-        <h1>Patient List</h1>
+        <h1>Prescription Records</h1>
       
-        <v-card>        
+        <v-card elevation="10">
           <v-data-table
             :headers="headers"
             :items="plants"
-            
             item-key="name">
           </v-data-table>
         </v-card>

@@ -21,6 +21,7 @@ export default createVuetify({
           secondary: '#5CBBF6',
           'blue-grey-darken-4': '#072a36',
           'teal-darken-1': '#004D40',
+          'teal': '#009688',
           'teal-accent-4': '#00BFA5',
         }
       },
@@ -30,8 +31,9 @@ export default createVuetify({
           primary: '#1867C0',
           secondary: '#5CBBF6',
           'blue-grey-darken-4': '#1B2A47',
-          'teal-darken-1': '#00BFA5',
-          'teal-accent-4': '#1B2A47', //blue
+          'teal-darken-4': '#00BFA5',
+          'teal': '#1B2A47', //blue
+          'teal-accent-4': '#009688',
           'white': '1B2A47',
         }
       }
