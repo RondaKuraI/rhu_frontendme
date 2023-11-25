@@ -91,13 +91,12 @@
         </v-img>
 
         <v-list>
-          <v-list-item-action>
-            <v-list-item prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-          </v-list-item-action>
-          <!--
-          <v-list-item>Appointment</v-list-item>
-          <v-list-item>Records</v-list-item>
-          -->
+            <v-list-item v-for="(link, l) in links" :key="l" :value="link" router :to="link.route">
+              <template v-slot:prepend>
+                <v-icon :icon="link.icon"></v-icon>
+              </template>
+              <v-list-item-title v-text="link.text"></v-list-item-title>
+            </v-list-item>
         </v-list>
 
     </v-navigation-drawer>
@@ -109,6 +108,11 @@ export default {
     name: 'Header',
     data: () => ({
         isDrawerOpen: true,
+        links: [
+        { text: 'Dashboard', icon: 'mdi-view-dashboard', route: '/dashboard' },
+        { text: 'Appointment', icon: 'mdi-calendar', route: '/dashboard/appointment' },
+        { text: 'Records', icon: 'mdi-folder', route: '/dashboard/records' },
+      ],
     }),
 }
 </script>

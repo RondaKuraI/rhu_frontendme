@@ -1,4 +1,5 @@
 <template>
+  <div>
     <NavBar />
 
       <v-container>
@@ -22,6 +23,7 @@
             </v-col>
           </v-row>
         </v-container>
+  </div>
 
 </template>
   
