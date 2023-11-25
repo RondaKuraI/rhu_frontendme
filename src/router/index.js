@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Appointment from '../views/UserPanel/Appointment.vue'
+import Records from '../views/UserPanel/Records.vue'
 
 import StaffDashboard from '../views/StaffPanel/StaffDashboard.vue'
 import StaffAppointment from '../views/StaffPanel/StaffAppointment.vue'
@@ -13,7 +14,7 @@ import StaffService from '../views/StaffPanel/StaffService.vue'
 import AdminDashboard from '../views/AdminPanel/AdminDashboard.vue'
 import AdminAppointment from '../views/AdminPanel/AdminAppointment.vue'
 import AdminPatient from '../views/AdminPanel/AdminPatient.vue'
-import AdminService from '../views/AdminPanel/AdminService.vue'
+import Doctors from '../views/AdminPanel/Doctors.vue'
 
 const routes = [
   {
@@ -29,65 +30,57 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-  {
-    path: '/',
+  { path: '/',
     name: 'login',
-    component: LoginView
+    component: LoginView 
   },
-  {
-    path: '/register',
+  { path: '/register',
     name: 'register',
-    component: RegisterView
+    component: RegisterView 
   },
-  {
-    path: '/dashboard',
+  { path: '/dashboard',
     name: 'dashboard',
-    component: Dashboard
+    component: Dashboard 
   },
-  {
-    path: '/dashboard/appointment',
+  { path: '/dashboard/appointment',
     name: 'appointment',
-    component: Appointment
+    component: Appointment 
   },
-  {
-    path: '/staff-dashboard',
+  { path: '/dashboard/records',
+    name: 'records',
+    component: Records 
+  },
+  {path: '/staff-dashboard',
     name: 'staff dashboard',
-    component: StaffDashboard
+    component: StaffDashboard 
   },
-  {
-    path: '/staff-dashboard/appointment',
+  { path: '/staff-dashboard/appointment',
     name: 'staff appointment',
-    component: StaffAppointment
+    component: StaffAppointment 
   },
-  {
-    path: '/staff-dashboard/patient',
+  { path: '/staff-dashboard/patient',
     name: 'staff patient',
-    component: StaffPatient
+    component: StaffPatient 
   },
-  {
-    path: '/staff-dashboard/service',
+  { path: '/staff-dashboard/service',
     name: 'staff service',
-    component: StaffService
+    component: StaffService 
   },
-  {
-    path: '/admin-dashboard',
+  { path: '/admin-dashboard',
     name: 'admin dashboard',
-    component: AdminDashboard
+    component: AdminDashboard 
   },
-  {
-    path: '/admin-dashboard/appointment',
+  { path: '/admin-dashboard/appointment',
     name: 'admin appointment',
-    component: AdminAppointment
+    component: AdminAppointment 
   },
-  {
-    path: '/admin-dashboard/patient',
+  { path: '/admin-dashboard/patient',
     name: 'admin patient',
-    component: AdminPatient
+    component: AdminPatient 
   },
-  {
-    path: '/admin-dashboard/service',
-    name: 'admin service',
-    component: AdminService
+  { path: '/admin-dashboard/doctor',
+    name: 'admin doctor',
+    component: Doctors 
   },
 ]
 

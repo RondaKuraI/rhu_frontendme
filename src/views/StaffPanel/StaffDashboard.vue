@@ -1,6 +1,6 @@
 <template>
-    <v-app theme="light">
-      <v-navigation-drawer v-model="isDrawerOpen" color="teal-accent-4">
+  <v-container>
+    <v-navigation-drawer v-model="isDrawerOpen" color="teal-accent-4">
         <v-img src="https://i.pinimg.com/564x/c2/c9/3a/c2c93a4b265f925c0d23188b36073a87.jpg" class="pa-4" max-height="200"
                 cover>
               <div class="text-center mt-4">
@@ -18,17 +18,13 @@
           <v-list-item to="/staff-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
           <v-list-item to="/staff-dashboard/appointment" prepend-icon="mdi-calendar">Appointment</v-list-item>
           <v-list-item to="/staff-dashboard/patient" prepend-icon="mdi-folder">Patient</v-list-item>
-          <v-list-item to="/staff-dashboard/service" prepend-icon="mdi-folder">Service</v-list-item>
-          <!--
-          <v-list-group value="Hakdog">
+
+          <v-list-group value="Hakddog">
             <template #activator="{props}">
-              <v-list-item v-bind="props" prepend-icon="mdi-account-circle">Users</v-list-item>
+              <v-list-item v-bind="props" prepend-icon="mdi-folder">Inventory</v-list-item>
             </template>
-            <v-list-item prepend-icon="mdi-folder">Me</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">Myself</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">I</v-list-item>
+            <v-list-item to="/staff-dashboard/medicine" prepend-icon="mdi-pill">Medicine</v-list-item>
           </v-list-group>
-          -->
         </v-list>
           
         <template v-slot:append>
@@ -77,6 +73,8 @@
           
         </template>
       </v-app-bar>
+    <v-app theme="dark">
+
   
       <v-main>
       <v-container>
@@ -149,7 +147,7 @@
           </v-col>
         </v-row>
   
-        <v-card flat class="border mt-4">
+        <v-card class="border mt-4">
           <div class="d-flex justify-space-between">
             <v-card-title>Table</v-card-title>
   
@@ -246,7 +244,8 @@
         </v-card>
       </v-container>
     </v-main>
-    </v-app>
+  </v-app>
+  </v-container>
   </template>
     
   <script>

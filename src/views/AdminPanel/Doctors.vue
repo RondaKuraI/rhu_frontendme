@@ -16,24 +16,37 @@
         <v-list>
           <!--<v-list-subheader>Menu</v-list-subheader>-->
           <v-list-item to="/admin-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointment</v-list-item>
-          <v-list-item to="/admin-dashboard/patient" prepend-icon="mdi-folder">Patient</v-list-item>
-          <v-list-item to="/admin-dashboard/service" prepend-icon="mdi-folder">Service</v-list-item>
-          <!--
+          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointments</v-list-item>
+          <v-list-item to="/admin-dashboard/doctor" prepend-icon="mdi-account-circle">Doctors</v-list-item>
+          <v-list-item to="/admin-dashboard/staff" prepend-icon="mdi-account-circle">Staffs</v-list-item>
+          <v-list-item to="/admin-dashboard/patient" prepend-icon="mdi-account-circle">Patients</v-list-item>
+          
           <v-list-group value="Hakdog">
             <template #activator="{props}">
-              <v-list-item v-bind="props" prepend-icon="mdi-account-circle">Users</v-list-item>
+              <v-list-item v-bind="props" prepend-icon="mdi-home-account">Barangays</v-list-item>
             </template>
-            <v-list-item prepend-icon="mdi-folder">Me</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">Myself</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">I</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Bigaan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Calangatan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Calsapa</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Ilag</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Lumangbayan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Tacligan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Poblacion</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Caagutayan</v-list-item>
           </v-list-group>
-          -->
+  
+          <v-list-group value="Hakddog">
+            <template #activator="{props}">
+              <v-list-item v-bind="props" prepend-icon="mdi-folder">Inventory</v-list-item>
+            </template>
+            <v-list-item to="/" prepend-icon="mdi-pill">Medicine</v-list-item>
+          </v-list-group>
+          
         </v-list>
           
         <template v-slot:append>
             <div class="pa-2">
-              <v-btn block color="teal-darken-4" href="/">
+              <v-btn block color="teal-darken-1" href="/">
                 Logout
               </v-btn>
             </div>
@@ -42,7 +55,7 @@
   
       <v-app-bar flat class="border-b" color="teal-accent-4" scroll-behavior="elevate">
         <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
-        <v-app-bar-title>Hakdog</v-app-bar-title>
+        <v-app-bar-title><h3>MEDICORD</h3></v-app-bar-title>
   
         <template #append>
           <v-btn icon class="mr-2">
@@ -77,18 +90,39 @@
           
         </template>
       </v-app-bar>
-
+  
       <v-main>
-        Service
+        <v-container>
+          <v-card>
+            <v-card-title>
+                <v-btn color="teal-darken-4">
+                    Add Doctor
+                </v-btn>
+            </v-card-title>
+            <v-data-table
+              :headers="headers"
+              :items="plants"
+              
+              item-key="name">
+            </v-data-table>
+          </v-card>
+      </v-container>
       </v-main>
     </v-app>
   </template>
-    
-  <script>
-  export default {
-    data: () => ({
-      isDrawerOpen: true,
-      dialog: false,
-    }),
-  }
-  </script>
+      
+    <script>
+    export default {
+      data: () => ({
+        isDrawerOpen: true,
+        dialog: false,
+        headers: [
+        { title: 'ID', align: 'start', sortable: false, key: 'name' },
+        { title: 'Schedule', align: 'end', key: 'light' },
+        { title: 'Reason', align: 'end', key: 'height' },
+        { title: 'Status', align: 'end', key: 'petFriendly' },
+        { title: 'Actions', align: 'end', key: 'price' },
+      ],
+      }),
+    }
+    </script>

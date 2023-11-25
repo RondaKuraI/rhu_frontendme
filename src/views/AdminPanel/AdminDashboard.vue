@@ -16,24 +16,37 @@
         <v-list>
           <!--<v-list-subheader>Menu</v-list-subheader>-->
           <v-list-item to="/admin-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointment</v-list-item>
-          <v-list-item to="/admin-dashboard/patient" prepend-icon="mdi-folder">Patient</v-list-item>
-          <v-list-item to="/admin-dashboard/service" prepend-icon="mdi-folder">Service</v-list-item>
-          <!--
+          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointments</v-list-item>
+          <v-list-item to="/admin-dashboard/doctor" prepend-icon="mdi-account-circle">Doctors</v-list-item>
+          <v-list-item to="/admin-dashboard/staff" prepend-icon="mdi-account-circle">Staffs</v-list-item>
+          <v-list-item to="/admin-dashboard/patient" prepend-icon="mdi-account-circle">Patients</v-list-item>
+          
           <v-list-group value="Hakdog">
             <template #activator="{props}">
-              <v-list-item v-bind="props" prepend-icon="mdi-account-circle">Users</v-list-item>
+              <v-list-item v-bind="props" prepend-icon="mdi-home-account">Barangays</v-list-item>
             </template>
-            <v-list-item prepend-icon="mdi-folder">Me</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">Myself</v-list-item>
-            <v-list-item prepend-icon="mdi-folder">I</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Bigaan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Calangatan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Calsapa</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Ilag</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Lumangbayan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Tacligan</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Poblacion</v-list-item>
+            <v-list-item to="/" prepend-icon="mdi-map-marker">Caagutayan</v-list-item>
           </v-list-group>
-          -->
+
+          <v-list-group value="Hakddog">
+            <template #activator="{props}">
+              <v-list-item v-bind="props" prepend-icon="mdi-folder">Inventory</v-list-item>
+            </template>
+            <v-list-item to="/" prepend-icon="mdi-pill">Medicine</v-list-item>
+          </v-list-group>
+          
         </v-list>
           
         <template v-slot:append>
             <div class="pa-2">
-              <v-btn block color="teal-darken-4" href="/">
+              <v-btn block color="teal-darken-1" href="/">
                 Logout
               </v-btn>
             </div>
@@ -42,7 +55,7 @@
   
       <v-app-bar flat class="border-b" color="teal-accent-4" scroll-behavior="elevate">
         <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
-        <v-app-bar-title>Hakdog</v-app-bar-title>
+        <v-app-bar-title><h3>MEDICORD</h3></v-app-bar-title>
   
         <template #append>
           <v-btn icon class="mr-2">
@@ -80,174 +93,84 @@
   
       <v-main>
       <v-container>
-        <h1 class="hidden-md-only text-h4 text-lg-h3 text-black px-4 py-2 mb-2">Dashboard</h1>
-      </v-container>
-      <v-container>
+        <!--<h1 class="hidden-md-only text-h4 text-lg-h3 text-black px-4 py-2 mb-2">Dashboard</h1>-->
+        <h1>Dashboard</h1>
         <v-row>
           <v-col cols="12" sm="6" md="4" lg="3">
-            <v-card>
-              <v-img class="align-end text-white" src="https://i.pinimg.com/564x/5b/bc/32/5bbc3213195438ef9d35fca126aaf02c.jpg" cover>
-                <v-card-title>Krankenhaus</v-card-title>
-              </v-img>
-              <v-card-text>
-                <div>hôpital</div>
-                <div>Omae wa mu shindeiru! Naniiiiiiiiiiiiiiiiiiii!!!!</div>
+            <v-card elevation="2" class="rounded-lg" color="white">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <h4 class="text-grey">TOTAL USERS</h4>
+                  <h2><strong>12</strong></h2>
+                </div>
+                <v-avatar color="teal-darken-3" size="60">
+                  <v-icon icon="mdi-account-group" size="large"></v-icon>
+                </v-avatar>
               </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" variant="elevated">Like</v-btn>
-                <v-btn prepend-icon="mdi-thumb-down" color="error" variant="tonal">Dislike</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
-  
+
           <v-col cols="12" sm="6" md="4" lg="3">
-            <v-card>
-              <v-img class="align-end text-white" src="https://i.pinimg.com/564x/5b/bc/32/5bbc3213195438ef9d35fca126aaf02c.jpg" cover>
-                <v-card-title>Krankenhaus</v-card-title>
-              </v-img>
-              <v-card-text>
-                <div>hôpital</div>
-                <div>Omae wa mu shindeiru! Naniiiiiiiiiiiiiiiiiiii!!!!</div>
+            <v-card elevation="2" class="rounded-lg" color="white">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <h4 class="text-grey">TOTAL DOCTORS</h4>
+                  <h2><strong>12</strong></h2>
+                </div>
+                <v-avatar color="cyan-darken-3" size="60">
+                  <v-icon icon="mdi-doctor" size="large"></v-icon>
+                </v-avatar>
               </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" variant="elevated">Like</v-btn>
-                <v-btn prepend-icon="mdi-thumb-down" color="error" variant="tonal">Dislike</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
-  
+
           <v-col cols="12" sm="6" md="4" lg="3">
-            <v-card>
-              <v-img class="align-end text-white" src="https://i.pinimg.com/564x/5b/bc/32/5bbc3213195438ef9d35fca126aaf02c.jpg" cover>
-                <v-card-title>Krankenhaus</v-card-title>
-              </v-img>
-              <v-card-text>
-                <div>hôpital</div>
-                <div>Omae wa mu shindeiru! Naniiiiiiiiiiiiiiiiiiii!!!!</div>
+            <v-card elevation="2" class="rounded-lg" color="white">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <h4 class="text-grey">TOTAL STAFFS</h4>
+                  <h2><strong>12</strong></h2>
+                </div>
+                <v-avatar color="light-blue-darken-3" size="60">
+                  <v-icon icon="mdi-account-multiple" size="large"></v-icon>
+                </v-avatar>
               </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" variant="elevated">Like</v-btn>
-                <v-btn prepend-icon="mdi-thumb-down" color="error" variant="tonal">Dislike</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
-  
+
           <v-col cols="12" sm="6" md="4" lg="3">
-            <v-card>
-              <v-img class="align-end text-white" src="https://i.pinimg.com/564x/5b/bc/32/5bbc3213195438ef9d35fca126aaf02c.jpg" cover>
-                <v-card-title>Krankenhaus</v-card-title>
-              </v-img>
-              <v-card-text>
-                <div>hôpital</div>
-                <div>Omae wa mu shindeiru! Naniiiiiiiiiiiiiiiiiiii!!!!</div>
+            <v-card elevation="2" class="rounded-lg" color="white">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <h4 class="text-grey">TOTAL PATIENTS</h4>
+                  <h2><strong>12</strong></h2>
+                </div>
+                <v-avatar color="blue-darken-3" size="60">
+                  <v-icon icon="mdi-account" size="large"></v-icon>
+                </v-avatar>
               </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" variant="elevated">Like</v-btn>
-                <v-btn prepend-icon="mdi-thumb-down" color="error" variant="tonal">Dislike</v-btn>
-              </v-card-actions>
             </v-card>
           </v-col>
+
+          <v-col cols="12" sm="6" md="4" lg="3">
+            <v-card elevation="2" class="rounded-lg" color="white">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <h4 class="text-grey">TOTAL MEDICINE</h4>
+                  <h2><strong>12</strong></h2>
+                </div>
+                <v-avatar color="indigo-darken-3" size="60">
+                  <v-icon icon="mdi-medical-bag" size="large"></v-icon>
+                </v-avatar>
+              </v-card-text>
+            </v-card>
+          </v-col>
+
         </v-row>
-  
-        <v-card flat class="border mt-4">
-          <div class="d-flex justify-space-between">
-            <v-card-title>Table</v-card-title>
-  
-            <v-card-title>
-              <v-dialog width="1024" v-model=dialog>
-                <template #activator="{ props }">
-                  <v-btn v-bind="props" variant="tonal" size="small">Add User</v-btn>
-                </template>
-  
-                <v-card>
-                  <v-card-title>
-                    <span class="text-h5">User Profile</span>
-                  </v-card-title>
-                  <v-card-text>
-                    <v-container>
-                      <v-row>
-                        <v-col cols="12" sm="6" md="4">
-                          <v-text-field label="Legal first name*" required></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6" md="4">
-                          <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6" md="4">
-                          <v-text-field label="Legal last name*" hint="example of persistent helper text" persistent-hint required></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-text-field label="Email*" required></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-text-field label="Password*" type="password" required></v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                          <v-select :items="['0-17', '18-29', '30-54', '54+']"
-                            label="Age*" required></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                          <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                            label="Interests" multiple></v-autocomplete>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                    <small>*indicates required field</small>
-                  </v-card-text>
-  
-                  <v-card-actions>
-                  <v-spacer></v-spacer>
-                    <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
-                      Close
-                    </v-btn>
-                    <v-btn
-                      color="blue-darken-1" variant="text" @click="dialog = false">
-                      Save
-                    </v-btn>
-                </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card-title>
-          </div>
-          
-          <v-table>
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!--<tr v-for="user in users">-->
-              <tr>
-                <td>Zaha</td>
-                <td>Sanko</td>
-                <td>zahasanko@gmail.com</td>
-                <td>14</td>
-                <td>
-                  <v-btn variant="elevated" color="teal-darken-4" class="mr-2" >Edit</v-btn>
-                  <v-btn variant="elevated" color="red-accent-4" >Delete</v-btn>
-                </td>
-              </tr>
-              <tr>
-                <td>Shimada</td>
-                <td>Death</td>
-                <td>shimada@gmail.com</td>
-                <td>Unknown</td>
-                <td>
-                  <v-btn variant="elevated" color="teal-darken-4" class="mr-2" >Edit</v-btn>
-                  <v-btn variant="elevated" color="red-accent-4" >Delete</v-btn>
-                </td>
-              </tr>
-            </tbody>
-          </v-table>
-        </v-card>
       </v-container>
     </v-main>
     </v-app>
-  </template>
+</template>
     
   <script>
   export default {
