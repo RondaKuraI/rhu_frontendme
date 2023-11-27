@@ -8,7 +8,7 @@
         <v-card elevation="10">
           <v-data-table
             :headers="headers"
-            :items="plants"
+            :items="records"
             item-key="name">
           </v-data-table>
         </v-card>
@@ -27,12 +27,16 @@ import NavBar from '@/components/User/NavBar.vue';
       isDrawerOpen: true,
       dialog: false,
       headers: [
-      { title: 'Plant', align: 'start', sortable: false, key: 'name' },
-      { title: 'Light', align: 'end', key: 'light' },
-      { title: 'Height', align: 'end', key: 'height' },
-      { title: 'Pet Friendly', align: 'end', key: 'petFriendly' },
-      { title: 'Price ($)', align: 'end', key: 'price' },
+      { title: 'Reference ID', align: 'start', sortable: false, key: 'name' },
+      { title: 'Reason', align: 'end', key: 'light' },
+      { title: 'Doctor', align: 'end', key: 'height' },
+      { title: 'Review Date ', align: 'end', key: 'petFriendly' },
+      { title: 'Prescription Date', align: 'end', key: 'price' },
+      { title: 'Status', align: 'end', key: 'price' },
     ],
+    records: [
+      { name: 'Fern', light: 'Low', height: '20cm', petFriendly: 'Yes', price: 20, price: 233 },
+    ]
     }),
   }
 </script>

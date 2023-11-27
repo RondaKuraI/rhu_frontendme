@@ -41,16 +41,8 @@
             </template>
             <v-list-item to="/" prepend-icon="mdi-pill">Medicine</v-list-item>
           </v-list-group>
-          
         </v-list>
           
-        <template v-slot:append>
-            <div class="pa-2">
-              <v-btn block color="teal-darken-1" href="/">
-                Logout
-              </v-btn>
-            </div>
-          </template>
       </v-navigation-drawer>
   
       <v-app-bar flat class="border-b" color="teal-accent-4" scroll-behavior="elevate">
