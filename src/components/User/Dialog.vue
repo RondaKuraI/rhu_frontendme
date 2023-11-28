@@ -43,6 +43,18 @@
                               </v-col>
                             </v-row>
                           -->
+                          <v-menu>
+                            <v-text-field label="Due Date" append-icon="date">wefwefe</v-text-field>
+                          </v-menu>
+
+                          <v-menu
+                              transition="slide-y-transition"
+                            >
+                              <template v-slot:activator="{ props }">
+                                <v-text-field label="Due Date" append-icon="calendar"></v-text-field>
+                                
+                              </template>
+                          </v-menu>
                         </v-form>
                     </v-container>
                 </v-card-text>
