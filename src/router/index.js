@@ -5,6 +5,7 @@ import RegisterView from '../views/RegisterView.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Appointment from '../views/UserPanel/Appointment.vue'
 import Records from '../views/UserPanel/Records.vue'
+import Profile from '../views/UserPanel/Profile.vue'
 
 import StaffDashboard from '../views/StaffPanel/StaffDashboard.vue'
 import StaffAppointment from '../views/StaffPanel/StaffAppointment.vue'
@@ -32,7 +33,7 @@ const routes = [
   },
   { path: '/',
     name: 'login',
-    component: LoginView 
+    component: LoginView
   },
   { path: '/register',
     name: 'register',
@@ -40,7 +41,8 @@ const routes = [
   },
   { path: '/dashboard',
     name: 'dashboard',
-    component: Dashboard 
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   { path: '/dashboard/appointment',
     name: 'appointment',
@@ -49,6 +51,10 @@ const routes = [
   { path: '/dashboard/records',
     name: 'records',
     component: Records 
+  },
+  { path: '/dashboard/profile',
+    name: 'profile',
+    component: Profile 
   },
   {path: '/staff-dashboard',
     name: 'staff dashboard',
@@ -89,4 +95,21 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  const isLoggedin = checkUserLogin();
+  if(to.matched.some((record)  => record.meta.requiresAuth)){
+    if(!isLoggedin){
+      next("/");
+    }else{
+      next();
+    }
+  }else{
+    next();
+  }
+});
+
+function checkUserLogin(){
+  const userToken = sessionStorage.getItem("token");
+  return !!userToken;
+}
 export default router

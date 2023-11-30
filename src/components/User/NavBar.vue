@@ -47,14 +47,16 @@
       </v-toolbar-title>
 
       <template #append>
-        <v-btn icon class="mr-2">
+        <!-- <v-btn icon class="mr-2">
           <v-badge dot color="error">
           <v-icon icon="mdi-bell-outline"></v-icon>
         </v-badge>
-        </v-btn>
+        </v-btn> -->
+        
         
         <v-menu>
           <template #activator="{props}">
+            <span class="font-weight-light pa-2">User</span>
             <v-avatar v-bind="props">
               <v-img cover src="https://i.pinimg.com/564x/d4/59/89/d4598938659abfc00f2688aacb20702b.jpg"></v-img>
             </v-avatar>
@@ -62,7 +64,7 @@
 
           <v-card min-width="200px">
             <v-list :lines="false" density="compact" nav>
-              <v-list-item to="/profile" prepend-icon="mdi-heart-outline">
+              <v-list-item to="/dashboard/profile" prepend-icon="mdi-heart-outline">
                 <v-list-item-title>Profile</v-list-item-title>
               </v-list-item>
 
