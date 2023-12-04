@@ -8,8 +8,15 @@
         <v-card elevation="10">
           <v-data-table
             :headers="headers"
-            :items="records"
-            item-key="name">
+            :items="user_records"
+            item-key="reference_id">
+
+            <!-- Custom slot for the 'status' column -->
+            <template v-slot:item.status="{ item }">
+              <v-chip :color="getStatusColor(item.status)" color="white" variant="flat" size="small">
+                {{ item.status.toLowerCase() }}
+              </v-chip>
+            </template>
           </v-data-table>
         </v-card>
     </v-container>
@@ -17,6 +24,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import NavBar from '@/components/User/NavBar.vue';
   export default {
     name: 'Appointment',
@@ -24,20 +32,44 @@ import NavBar from '@/components/User/NavBar.vue';
       NavBar
     },
     data: () => ({
+      user_records: [],
       isDrawerOpen: true,
       dialog: false,
       headers: [
-      { title: 'Reference ID', align: 'start', sortable: false, key: 'name' },
-      { title: 'Reason', align: 'end', key: 'light' },
-      { title: 'Doctor', align: 'end', key: 'height' },
-      { title: 'Review Date ', align: 'end', key: 'petFriendly' },
-      { title: 'Prescription Date', align: 'end', key: 'price' },
-      { title: 'Status', align: 'end', key: 'price' },
+      { title: 'Reference ID', align: 'start', sortable: false, key: 'reference_id' },
+      { title: 'Reason', key: 'reason' },
+      { title: 'Doctor', key: 'doctor' },
+      { title: 'Review Date ', key: 'review_date' },
+      { title: 'Prescription Date', key: 'prescription_date' },
+      { title: 'Status', key: 'status' },
     ],
-    records: [
-      { name: 'Fern', light: 'Low', height: '20cm', petFriendly: 'Yes', price: 20, price: 233 },
-    ]
     }),
+    created() {
+      this.getUser_Records();
+    },
+    methods: {
+      async getUser_Records(){
+        try {
+          const user_rec = await axios.get('getData2');
+          this.user_records = user_rec.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      // Function to determine the color of the status chip based on status value
+      getStatusColor(status){
+        switch(status.toLowerCase()){
+          case 'pending':
+            return 'yellow';
+          case 'confirmed':
+            return 'green';
+          case 'cancelled':
+            return 'red';
+          default:
+            return 'grey';
+        }
+      }
+    }
   }
 </script>
 

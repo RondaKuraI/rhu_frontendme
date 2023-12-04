@@ -66,7 +66,7 @@ import NavBar from '@/components/User/NavBar.vue';
       // Function to determine the color of the status chip based on status value
       getStatusColor(status){
         switch(status.toLowerCase()){
-          case 'pending' || 'Pending':
+          case 'pending':
             return 'yellow';
           case 'confirmed':
             return 'green';
