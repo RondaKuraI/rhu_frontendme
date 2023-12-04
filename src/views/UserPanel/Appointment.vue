@@ -8,9 +8,15 @@
         <v-card elevation="10">        
           <v-data-table
             :headers="headers"
-            :items="appointment"
-            
-            item-key="name">
+            :items="user_appointments"          
+            item-key="patient_name">
+
+            <!-- Custom slot for the 'status' column -->
+            <template v-slot:item.status="{ item }">
+              <v-chip :color="getStatusColor(item.status)" color="white" variant="flat" size="small">
+                {{ item.status.toLowerCase() }}
+              </v-chip>
+            </template>
           </v-data-table>
         </v-card>
     </v-container>
@@ -18,6 +24,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import NavBar from '@/components/User/NavBar.vue';
   export default {
     name: 'Appointment',
@@ -25,18 +32,51 @@ import NavBar from '@/components/User/NavBar.vue';
       NavBar
     },
     data: () => ({
+      user_appointments: [],
+
       isDrawerOpen: true,
       dialog: false,
       headers: [
-      { title: 'Patient Name', align: 'start', sortable: false, key: 'pName' },
+      { title: 'Patient Name', align: 'start', sortable: false, key: 'patient_name' },
       { title: 'Appointment Schedule', align: 'start', key: 'schedule' },
       { title: 'Reason', align: 'start', key: 'reason' },
-      { title: 'Status', align: 'start', key: 'status' },
+      { title: 'Status', 
+        align: 'start', 
+        key: 'status' },
       ],
-    appointment: [
-      { pName: 'Fern', schedule: 'Low', reason: '20cm', status: 'Yes', },
-    ]
+    // appointment: [
+    //   { pName: 'Fern',
+    //     schedule: '',
+    //     reason: '',
+    //     status: '', },
+    // ]
     }),
+    created() {
+      this.getUser_Appointments();
+    },
+    methods: {
+      async getUser_Appointments(){
+        try {
+          const user_app = await axios.get('getData');
+          this.user_appointments = user_app.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      // Function to determine the color of the status chip based on status value
+      getStatusColor(status){
+        switch(status.toLowerCase()){
+          case 'pending' || 'Pending':
+            return 'yellow';
+          case 'confirmed':
+            return 'green';
+          case 'Cancelled':
+            return 'red';
+          default:
+            return 'grey';
+        }
+      }
+    }
   }
 </script>
 

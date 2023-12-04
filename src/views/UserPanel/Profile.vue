@@ -12,10 +12,16 @@
 
         <v-container>
             <v-card>
-                <v-form fast-fail @submit.prevent>
+                <v-form fast-fail @submit.prevent="createProduct">
+                    <v-text-field v-model="email" label="Email" :rules="emailRules"></v-text-field>
+                    <v-file-input label="Select an image"></v-file-input>
                     <v-text-field v-model="firstName" label="First name" :rules="firstNameRules"></v-text-field>
                     <v-text-field v-model="middleName" label="Middle name" :rules="middleNameRules"></v-text-field>
                     <v-text-field v-model="lastName" label="Last name" :rules="lastNameRules"></v-text-field>
+                    <v-select label="Gender" :items="['Male', 'Female', 'Goat', 'Athiest']"></v-select>
+                    <v-select label="Civil Status" :items="['Single', 'Married', 'Divorced', 'Widowed', 'in a civil partnership or being a former civil partner in a civil partnership that has ended by death or, been dissolved']"></v-select>
+                    <v-textarea label="Address"></v-textarea>
+                    <v-text-field v-model="contactNum" label="Contact Number" :rules="contactNumRules"></v-text-field>
                     <v-btn type="submit" block class="mt-2">Submit</v-btn>
                 </v-form>
             </v-card>

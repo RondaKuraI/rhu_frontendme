@@ -1,6 +1,6 @@
 <template>
   <nav> 
-    <v-toolbar app color="teal">
+    <v-toolbar app color="teal" scroll-behavior="inverted">
       <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase">
         <span class="font-weight-light">Medi</span>
@@ -14,8 +14,10 @@
         </v-badge>
         </v-btn>
         
+        
         <v-menu>
           <template #activator="{props}">
+            <span class="font-weight-light pa-2">Admin</span>
             <v-avatar v-bind="props">
               <v-img cover src="https://i.pinimg.com/564x/d4/59/89/d4598938659abfc00f2688aacb20702b.jpg"></v-img>
             </v-avatar>
@@ -23,7 +25,7 @@
 
           <v-card min-width="200px">
             <v-list :lines="false" density="compact" nav>
-              <v-list-item to="/profile" prepend-icon="mdi-heart-outline">
+              <v-list-item to="/dashboard/profile" prepend-icon="mdi-heart-outline">
                 <v-list-item-title>Profile</v-list-item-title>
               </v-list-item>
 
@@ -93,3 +95,4 @@ export default {
     }),
 }
 </script>
+
