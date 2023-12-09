@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <Admin_NavBar />
 
@@ -12,6 +12,33 @@
           </template>
         </v-data-table>
       </v-card>
+    </v-container>
+  </div>
+</template> -->
+<template>
+  <div>
+    <Admin_NavBar />
+    
+    <v-container>
+        <h1>Appointments</h1>
+      
+        <v-card elevation="10">        
+          <v-data-table
+            :headers="headers"
+            :items="appointments"
+            item-key="name">
+            <template v-slot:top>
+              <v-toolbar color="teal-accent-4">
+                <v-toolbar-title>List of Records</v-toolbar-title>
+                <v-divider class="mx-4" inset vertical></v-divider>
+              </v-toolbar>
+            </template>
+            <template v-slot:item.actions="{ item }">
+              <v-btn class="me-2" color="blue">Edit</v-btn>
+              <v-btn color="red">Delete</v-btn>
+            </template>
+          </v-data-table>
+        </v-card>
     </v-container>
   </div>
 </template>

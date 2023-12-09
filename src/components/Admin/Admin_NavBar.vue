@@ -1,8 +1,8 @@
 <template>
   <nav> 
-    <v-toolbar app color="teal" scroll-behavior="inverted">
+    <v-toolbar app color="teal-darken-4" scroll-behavior="inverted">
       <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
-      <v-toolbar-title class="text-uppercase">
+      <v-toolbar-title>
         <span class="font-weight-light">Medi</span>
         <span>Cord</span>
       </v-toolbar-title>
@@ -42,7 +42,7 @@
       </template>
     </v-toolbar>
 
-    <v-navigation-drawer v-model="isDrawerOpen" color="teal">
+    <v-navigation-drawer v-model="isDrawerOpen" color="teal-darken-4">
       <v-img src="https://i.pinimg.com/564x/c2/c9/3a/c2c93a4b265f925c0d23188b36073a87.jpg" class="pa-4" max-height="200"
               cover>
             <div class="text-center mt-4">
@@ -56,12 +56,13 @@
         <v-list>
           <!--<v-list-subheader>Menu</v-list-subheader>-->
           <v-list-item to="/admin-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointments</v-list-item>
-          <v-list-item to="/admin-dashboard/doctor" prepend-icon="mdi-account-circle">Doctors</v-list-item>
-          <v-list-item to="/admin-dashboard/staff" prepend-icon="mdi-account-circle">Staffs</v-list-item>
           <v-list-item to="/admin-dashboard/patient" prepend-icon="mdi-account-circle">Patients</v-list-item>
+          <v-list-item to="/admin-dashboard/barangay" prepend-icon="mdi-account-circle">Barangays</v-list-item>
+          <v-list-item to="/admin-dashboard/appointment" prepend-icon="mdi-calendar">Appointments</v-list-item>
+          <!-- <v-list-item to="/admin-dashboard/doctor" prepend-icon="mdi-account-circle">Doctors</v-list-item> -->
+          <v-list-item to="/admin-dashboard/staff" prepend-icon="mdi-account-circle">Staffs</v-list-item>
           
-          <v-list-group value="Hakdog">
+          <!-- <v-list-group value="Hakdog">
             <template #activator="{props}">
               <v-list-item v-bind="props" prepend-icon="mdi-home-account">Barangays</v-list-item>
             </template>
@@ -73,7 +74,7 @@
             <v-list-item to="/" prepend-icon="mdi-map-marker">Tacligan</v-list-item>
             <v-list-item to="/" prepend-icon="mdi-map-marker">Poblacion</v-list-item>
             <v-list-item to="/" prepend-icon="mdi-map-marker">Caagutayan</v-list-item>
-          </v-list-group>
+          </v-list-group> -->
 
           <v-list-group value="Hakddog">
             <template #activator="{props}">

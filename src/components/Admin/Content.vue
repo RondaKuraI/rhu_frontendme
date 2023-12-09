@@ -2,7 +2,11 @@
     <div>
       <v-container>
           <!--<h1 class="hidden-md-only text-h4 text-lg-h3 text-black px-4 py-2 mb-2">Dashboard</h1>-->
-          <h1>Dashboard</h1>
+          <v-row>
+            <v-col class="hidden-md-only text-sm-h5 text-lg-h4">
+                <h4>Dashboard</h4>
+            </v-col>
+          </v-row>
           <v-row>
             <v-col cols="12" sm="6" md="4" lg="3">
               <v-card elevation="2" class="rounded-lg" color="white">

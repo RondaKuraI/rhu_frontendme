@@ -16,6 +16,10 @@ import AdminDashboard from '../views/AdminPanel/AdminDashboard.vue'
 import AdminAppointment from '../views/AdminPanel/AdminAppointment.vue'
 import AdminPatient from '../views/AdminPanel/AdminPatient.vue'
 import Doctors from '../views/AdminPanel/Doctors.vue'
+import Patients from '../views/AdminPanel/Patients.vue'
+import Barangays from '../views/AdminPanel/Barangays.vue'
+import Staffs from '../views/AdminPanel/Staffs.vue'
+import Settings from '../views/AdminPanel/Settings.vue'
 
 const routes = [
   {
@@ -76,13 +80,29 @@ const routes = [
     name: 'admin dashboard',
     component: AdminDashboard 
   },
+  { path: '/admin-dashboard/patient',
+    name: 'admin dashboard patients',
+    component: Patients 
+  },
   { path: '/admin-dashboard/appointment',
     name: 'admin appointment',
     component: AdminAppointment 
   },
+  { path: '/admin-dashboard/barangay',
+    name: 'admin dashboard barangays',
+    component: Barangays 
+  },
   { path: '/admin-dashboard/patient',
     name: 'admin patient',
     component: AdminPatient 
+  },
+  { path: '/admin-dashboard/staff',
+    name: 'admin staffs',
+    component: Staffs 
+  },
+  { path: '/admin-dashboard/setting',
+    name: 'admin settings',
+    component: Settings 
   },
   { path: '/admin-dashboard/doctor',
     name: 'admin doctor',
