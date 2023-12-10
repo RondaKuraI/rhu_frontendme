@@ -3,9 +3,9 @@
     <NavBar />
     
     <v-container>
-        <h1>Appointments</h1>
+        <h2>Appointments</h2>
       
-        <v-card elevation="10">        
+        <v-card elevation="10" class="mt-2">
           <v-data-table
             :headers="headers"
             :items="user_appointments"          

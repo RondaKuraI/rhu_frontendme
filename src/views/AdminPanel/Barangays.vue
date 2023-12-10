@@ -2,10 +2,7 @@
     <Admin_NavBar />
     <v-container>
         <v-card>
-          <v-tabs
-            v-model="tab"
-            bg-color="teal-accent-4"
-          >
+          <v-tabs v-model="tab" bg-color="teal-accent-1" fixed-tabs>
             <v-tab value="Bigaan">Bigaan</v-tab>
             <v-tab value="Calangatan">Calangatan</v-tab>
             <v-tab value="Calsapa">Calsapa</v-tab>
