@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
   export default {
       name: 'Records',
@@ -78,8 +77,8 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
           Admin_NavBar,
       },
       data: () => ({
-        first_name: '',
-        patient_records: [],
+        date: '',
+        time: '',
         dialog: false,
         items: [
           'Bigaan',
@@ -95,22 +94,6 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
         ],
         loaded: false,
         loading: false,
-        headers: [
-          { title: 'ID', align: 'start', sortable: false, key: 'id' },
-          { title: 'First Name', key: 'first_name' },
-          { title: 'Middle Name', key: 'middle_name' },
-          { title: 'Last Name', key: 'last_name' },
-          { title: 'Birthdate', key: 'birthdate' },
-          { title: 'Age', key: 'age' },
-          { title: 'Sex', key: 'sex' },
-          { title: 'Contact No.', key: 'contact_num' },
-          { title: 'Barangay', key: 'brgy' },
-        ],
       }),
-      methods: {
-        submit() {
-          console.log(this.first_name);
-        }
-      }
-  }
+    }
 </script>

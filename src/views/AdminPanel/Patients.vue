@@ -97,7 +97,7 @@
 import axios from 'axios';
 import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
     export default {
-        name: 'Records',
+        name: 'Patients',
         components: {
             Admin_NavBar,
         },

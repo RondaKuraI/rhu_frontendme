@@ -39,6 +39,7 @@ import NavBar from '@/components/User/NavBar.vue';
       headers: [
       { title: 'Patient Name', align: 'start', sortable: false, key: 'patient_name' },
       { title: 'Appointment Schedule', align: 'start', key: 'schedule' },
+      { title: 'Doctor', align: 'start', key: 'doctor' },
       { title: 'Reason', align: 'start', key: 'reason' },
       { title: 'Status', 
         align: 'start', 

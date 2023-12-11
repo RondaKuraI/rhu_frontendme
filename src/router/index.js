@@ -11,6 +11,8 @@ import StaffDashboard from '../views/StaffPanel/StaffDashboard.vue'
 import StaffAppointment from '../views/StaffPanel/StaffAppointment.vue'
 import StaffPatient from '../views/StaffPanel/StaffPatient.vue'
 import StaffService from '../views/StaffPanel/StaffService.vue'
+import Pending_Appointments from '../views/StaffPanel/Pending_Appointments.vue'
+import Cancel_Message from '../views/StaffPanel/Cancel_Message.vue'
 
 import AdminDashboard from '../views/AdminPanel/AdminDashboard.vue'
 import AdminAppointment from '../views/AdminPanel/AdminAppointment.vue'
@@ -75,6 +77,14 @@ const routes = [
   { path: '/staff-dashboard/service',
     name: 'staff service',
     component: StaffService 
+  },
+  { path: '/staff-dashboard/pending_appointments',
+    name: 'pending_appointments',
+    component: Pending_Appointments
+  },
+  { path: '/staff-dashboard/cancel_message',
+    name: 'Cancel_Message',
+    component: Cancel_Message
   },
   { path: '/admin-dashboard',
     name: 'admin dashboard',
