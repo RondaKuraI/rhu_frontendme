@@ -92,8 +92,8 @@
           <v-list>
             <!--<v-list-subheader>Menu</v-list-subheader>-->
             <v-list-item to="/staff-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-            <v-list-item to="/staff-dashboard/patient" prepend-icon="mdi-account-circle">Patients</v-list-item>
             <v-list-item to="/staff-dashboard/appointment" prepend-icon="mdi-calendar">Appointments</v-list-item>
+            <v-list-item to="/staff-dashboard/patient" prepend-icon="mdi-account-circle">Patients</v-list-item>
 
             <v-list-group value="Hakddog">
               <template #activator="{props}">

@@ -1,84 +1,168 @@
 <template>
-    <v-app theme="light">
-      <v-navigation-drawer v-model="isDrawerOpen" color="teal-accent-4">
-        <v-img src="https://i.pinimg.com/564x/c2/c9/3a/c2c93a4b265f925c0d23188b36073a87.jpg" class="pa-4" max-height="200"
-                cover>
-              <div class="text-center mt-4">
-                  <v-avatar class="mb-4" color="grey-darken-1" size="64">
-                      <v-img aspect-ratio="30" src="https://i.pinimg.com/564x/c0/30/a6/c030a61c8803bb91d21080796919d6df.jpg"/>
-                  </v-avatar>
-                  <h2 class="text-yellow-lighten-5">Staff Panel</h2>
-              </div>
-          </v-img>
-  
-          <v-divider></v-divider>
-  
-        <v-list>
-          <!--<v-list-subheader>Menu</v-list-subheader>-->
-          <v-list-item to="/staff-dashboard" prepend-icon="mdi-view-dashboard">Dashboard</v-list-item>
-          <v-list-item to="/staff-dashboard/appointment" prepend-icon="mdi-calendar">Appointment</v-list-item>
-          <v-list-item to="/staff-dashboard/patient" prepend-icon="mdi-folder">Patient</v-list-item>
-          <v-list-item to="/staff-dashboard/service" prepend-icon="mdi-folder">Service</v-list-item>
-        </v-list>
-          
-        <template v-slot:append>
-            <div class="pa-2">
-              <v-btn block color="teal-darken-4" href="/">
-                Logout
-              </v-btn>
-            </div>
-          </template>
-      </v-navigation-drawer>
-  
-      <v-app-bar flat class="border-b" color="teal-accent-4" scroll-behavior="elevate">
-        <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
-        <v-app-bar-title>Hakdog</v-app-bar-title>
-  
-        <template #append>
-          <v-btn icon class="mr-2">
-            <v-badge dot color="error">
-            <v-icon icon="mdi-bell-outline"></v-icon>
-          </v-badge>
-          </v-btn>
-          
-          <v-menu>
-            <template #activator="{props}">
-              <v-avatar v-bind="props">
-                <v-img cover src="https://i.pinimg.com/564x/d4/59/89/d4598938659abfc00f2688aacb20702b.jpg"></v-img>
-              </v-avatar>
-            </template>
-  
-            <v-card min-width="200px">
-              <v-list :lines="false" density="compact" nav>
-                <v-list-item to="/favorites" prepend-icon="mdi-heart-outline">
-                  <v-list-item-title>Favorites</v-list-item-title>
-                </v-list-item>
-  
-                <v-list-item to="/settings" prepend-icon="mdi-cog-outline">
-                  <v-list-item-title>Settings</v-list-item-title>
-                </v-list-item>
-  
-                <v-list-item to="/" prepend-icon="mdi-account-outline">
-                  <v-list-item-title>Logout</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-card>
-          </v-menu>
-          
-        </template>
-      </v-app-bar>
+  <div>
+    <Staff_NavBar />
 
-      <v-main>
-        Patient
-      </v-main>
-    </v-app>
-  </template>
-    
-  <script>
+    <v-container>
+      <h2>Patient</h2>
+      <v-form>
+            <v-dialog v-model="dialog" width="900" transition="dialog-top-transition">
+              <template v-slot:activator="{props}">
+                <v-btn color="orange" size="small" v-bind="props" class="mt-2 mb-2" prepend-icon="mdi-plus">
+                  Add Patient
+                </v-btn>
+              </template>
+              <v-card>
+                <v-toolbar color="orange">
+                  <v-card-title>
+                    <span>Add Patient</span>
+                  </v-card-title>
+                </v-toolbar>
+
+                <v-card-text>       
+                  <v-container density="comfortable">
+                    <v-row>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field label="First Name*" required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field label="Middle Name*" required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field label="Last Name*" required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field label="Birthdate" required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field label="Age" required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="4">
+                        <v-radio-group label="Sex">
+                          <v-radio label="Male" value="one"></v-radio>
+                          <v-radio label="Female" value="two"></v-radio>
+                        </v-radio-group>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="6">
+                        <v-text-field label="Contact No." required variant="solo-filled" density="comfortable"></v-text-field>
+                      </v-col>
+  
+                      <v-col cols="12" sm="6" md="6">
+                        <v-select :items="items" density="comfortable" label="Barangay"></v-select>
+                      </v-col>
+  
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="red-accent-4" variant="elevated" @click="dialog = false">
+                    Close
+                  </v-btn>
+                  <v-btn color="teal-accent-4" variant="elevated" @click="dialog = false">
+                    Save
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-form>
+
+
+        <!-- List of Patients -->
+        <v-card elevation="10" class="mt-2">        
+          <v-data-table
+            :headers="headers"
+            :items="patient_full_name"
+            item-key="id">
+            <template v-slot:top>
+              <v-toolbar color="teal-accent-4">
+                <v-toolbar-title>List of Records</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-spacer></v-spacer>
+                <v-divider class="mx-4" inset vertical></v-divider>
+                <v-text-field :loading="loading" density="compact" variant="solo" label="Search" append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick" class="mr-2"></v-text-field>
+              </v-toolbar>
+            </template>
+            <!-- <template v-slot:item.actions="{ item }">
+              <v-btn class="me-2" color="blue">Edit</v-btn>
+              <v-btn color="red">Delete</v-btn>
+            </template> -->
+            <template v-slot:item.action="{ item }">
+                  <v-btn density="comfortable" color="teal-darken-4" class="me-2">View</v-btn>
+                  <v-btn density="comfortable" color="orange" class="me-2" to="/staff-dashboard/add_appointment">Add Appointment</v-btn>
+              </template>
+          </v-data-table>
+        </v-card>
+    </v-container>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+import Staff_NavBar from '@/components/Staff/Staff_NavBar.vue';
   export default {
-    data: () => ({
-      isDrawerOpen: true,
-      dialog: false,
-    }),
+      name: 'StaffPatient',
+      components: {
+          Staff_NavBar,
+      },
+      data: () => ({
+        patient_records: [],
+        dialog: false,
+        items: [
+          'Bigaan',
+          'Calangatan',
+          'Ilag',
+          'Lumangbayan',
+          'Tacligan',
+          'Poblacion',
+          'Caagutayan',
+        ],
+        loaded: false,
+        loading: false,
+        headers: [
+          // { title: 'First Name', key: 'first_name' },
+          // { title: 'Middle Name', key: 'middle_name' },
+          // { title: 'Last Name', key: 'last_name' },
+          { title: 'Patient Name', key: 'full_name', sortable: false, },
+          { title: 'Contact Number', key: 'contact_num', },
+          { title: 'Barangay', key: 'brgy', },
+          { title: 'Action', key: 'action', },
+        ],
+      }),
+      computed: {
+        patient_full_name() {
+          return this.patient_records.map(patient => ({
+            ...patient,
+            full_name: `${patient.first_name} ${patient.last_name}`,
+          }));
+        }
+      },
+      created() {
+        this.getPatient_Records();
+      },
+      methods: {
+        onClick () {
+          this.loading = true
+
+          setTimeout(() => {
+            this.loading = false
+            this.loaded = true
+          }, 2000)
+        },
+
+        async getPatient_Records(){
+          try {
+            const patient_rec = await axios.get('getpatrecData');
+            this.patient_records = patient_rec.data;
+          } catch(error){
+            console.log(error);
+          }
+        },
+      },
   }
-  </script>
+</script>

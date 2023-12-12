@@ -4,7 +4,7 @@
 
         <v-container>
             <h2 class="mb-2">Message</h2>
-            <v-card color="teal-accent-4">
+            <v-card color="teal-accent-1">
                 <v-card-title>Cancel Message to Patient</v-card-title>
                 <v-form>
                     <v-card-text>
@@ -23,7 +23,7 @@
                             </v-row>
                     </v-card-text>
                     <v-card-actions class="justify-end">
-                        <v-btn color="orange" variant="elevated" to="/staff-dashboard/pending_appointments">
+                        <v-btn color="red-accent-4" variant="elevated" to="/staff-dashboard/pending_appointments">
                           Back
                         </v-btn>
                         <v-btn color="teal-darken-4" variant="elevated" @click="submit" >

@@ -13,6 +13,7 @@ import StaffPatient from '../views/StaffPanel/StaffPatient.vue'
 import StaffService from '../views/StaffPanel/StaffService.vue'
 import Pending_Appointments from '../views/StaffPanel/Pending_Appointments.vue'
 import Cancel_Message from '../views/StaffPanel/Cancel_Message.vue'
+import Add_Appointment from '../views/StaffPanel/Add_Appointment.vue'
 
 import AdminDashboard from '../views/AdminPanel/AdminDashboard.vue'
 import AdminAppointment from '../views/AdminPanel/AdminAppointment.vue'
@@ -85,6 +86,10 @@ const routes = [
   { path: '/staff-dashboard/cancel_message',
     name: 'Cancel_Message',
     component: Cancel_Message
+  },
+  { path: '/staff-dashboard/add_appointment',
+    name: 'Add_Appointment',
+    component: Add_Appointment
   },
   { path: '/admin-dashboard',
     name: 'admin dashboard',
