@@ -11,13 +11,8 @@
                             <v-row>
                                 <v-col cols="12" sm="6" md="12">
                                     <v-text-field label="Patient Name" required variant="solo-filled" density="comfortable" v-model="patient"></v-text-field>
-                                </v-col>
-
-                                <v-col cols="12" sm="6" md="12">
                                     <v-select label="Doctor" :items="items" density="comfortable" variant="solo-filled" v-model="doctor"></v-select>
-                                </v-col>
-    
-                                <v-col cols="12" sm="6" md="12">
+                                    <v-text-field label="Schedule" required variant="solo-filled" density="comfortable" v-model="date" type="datetime-local"></v-text-field>
                                     <v-textarea label="Message" required variant="solo-filled" density="comfortable" v-model="message"></v-textarea>
                                 </v-col>
                             </v-row>

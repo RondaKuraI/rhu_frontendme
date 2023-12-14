@@ -99,7 +99,7 @@
               <template #activator="{props}">
                 <v-list-item v-bind="props" prepend-icon="mdi-folder">Inventory</v-list-item>
               </template>
-              <v-list-item to="/" prepend-icon="mdi-pill">Medicine</v-list-item>
+              <v-list-item to="/staff-dashboard/inventory/medicine" prepend-icon="mdi-pill">Medicine</v-list-item>
             </v-list-group>
           </v-list>
   

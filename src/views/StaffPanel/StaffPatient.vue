@@ -3,7 +3,7 @@
     <Staff_NavBar />
 
     <v-container>
-      <h2>Patient</h2>
+      <h2>Patients</h2>
       <v-form>
             <v-dialog v-model="dialog" width="900" transition="dialog-top-transition">
               <template v-slot:activator="{props}">
@@ -64,7 +64,7 @@
                   <v-btn color="red-accent-4" variant="elevated" @click="dialog = false">
                     Close
                   </v-btn>
-                  <v-btn color="teal-accent-4" variant="elevated" @click="dialog = false">
+                  <v-btn color="teal-darken-4" variant="elevated" @click="dialog = false">
                     Save
                   </v-btn>
                 </v-card-actions>

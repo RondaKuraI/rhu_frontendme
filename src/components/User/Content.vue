@@ -7,44 +7,70 @@
           </v-col>
       </v-row> -->
       <h2>Appointment Schedule</h2>
-          <v-dialog v-model="dialog" width="500" transition="dialog-top-transition">
+          <v-dialog v-model="dialog" width="900" transition="dialog-top-transition">
             <template v-slot:activator="{props}">
               <v-btn color="orange" size="small" v-bind="props" class="mt-2" prepend-icon="mdi-plus">
                 Add Appointment
               </v-btn>
             </template>
-            <v-card>
+            <v-card color="teal-accent-1">
               <v-toolbar color="orange">
                 <v-card-title>
-                  <span>Appointment</span>
+                  <span><h3>Appointment</h3></span>
                 </v-card-title>
               </v-toolbar>
 
-              <v-card-text>       
+              <v-card-text>
                 <v-container>
                   <v-form>
+                    <h3 class="mb-2">Personal Information</h3>       
                     <v-row>
-                      <v-col cols="12" sm="6" md="12">
-                        <v-text-field label="Date of Appointment" required variant="solo-filled" density="comfortable" v-model="date"></v-text-field>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field v-model="first_name" label="First Name*" required variant="solo-filled" density="comfortable"></v-text-field>        
+                        <v-text-field v-model="birthdate" label="Birthdate" required variant="solo-filled" density="comfortable" type="date"></v-text-field>                                                                          
+                      </v-col>
+
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field v-model="middle_name" label="Middle Name*" required variant="solo-filled" density="comfortable"></v-text-field>
+                        <v-text-field v-model="age" label="Age" required variant="solo-filled" density="comfortable"></v-text-field>   
                       </v-col>
   
-                      <v-col cols="12" sm="6" md="12">
-                        <v-text-field label="Time of Appointment" required variant="solo-filled" density="comfortable" v-model="time"></v-text-field>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field v-model="last_name" label="Last Name*" required variant="solo-filled" density="comfortable"></v-text-field>
+                        <v-select v-model="selectedSex" :items="sex" density="comfortable" label="Sex" variant="solo-filled"></v-select>
+                      </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
+                        <v-text-field v-model="contact_num" label="Contact No." required variant="solo-filled" density="comfortable"></v-text-field>
                       </v-col>
   
-                      <v-col cols="12" sm="6" md="12">
-                        <v-select :items="doctors" density="comfortable" label="Doctor" variant="solo-filled"></v-select>
+                      <v-col cols="12" sm="6" md="6">
+                        <v-select v-model="selectedBarangay" :items="barangay" density="comfortable" label="Barangay" variant="solo-filled"></v-select>
                       </v-col>
-  
+
+                      
+                    </v-row>
+                    <h3 class="mb-2">Add Appointment</h3> 
+                    <v-row>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field v-model="date" label="Date of Appointment" required variant="solo-filled" density="comfortable" type="date"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-text-field v-model="time" label="Time of Appointment" required variant="solo-filled" density="comfortable" type="time"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6" md="4">
+                        <v-select v-model="selectedDoctor" label="Doctor" :items="doctors" density="comfortable" variant="solo-filled"></v-select>
+                      </v-col>
+
                       <v-col cols="12" sm="6" md="12">
-                        <v-textarea label="Reason" required variant="solo-filled" density="comfortable"></v-textarea>
+                        <v-textarea v-model="reason" label="Reason" required variant="solo-filled" density="comfortable"></v-textarea>
                       </v-col>
                     </v-row>
                   </v-form>
                 </v-container>
               </v-card-text>
               <v-card-actions class="justify-end">
-                    <v-btn color="orange" variant="elevated" @click="dialog = false">
+                    <v-btn color="red-accent-4" variant="elevated" @click="dialog = false">
                       Close
                     </v-btn>
                     <v-btn color="teal-darken-4" variant="elevated" @click="submit" >
@@ -61,7 +87,7 @@
           <v-card elevation="10">
             <v-row>
               <v-col cols="12" sm="12" md="12" lg="12">
-                <v-date-picker elevation="24" width="100%" color="teal-accent-1"></v-date-picker>
+                <v-date-picker elevation="24" width="100%" color="teal-accent-4"></v-date-picker>
               </v-col>
             </v-row>
           </v-card>
@@ -77,10 +103,18 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
           Admin_NavBar,
       },
       data: () => ({
+        first_name: '',
+        middle_name: '',
+        last_name: '',
+        birthdate: '',
+        age: '',
+        selectedSex: null,
+        contact_num: '',
+        selectedBarangay: null,
         date: '',
         time: '',
         dialog: false,
-        items: [
+        barangay: [
           'Bigaan',
           'Calangatan',
           'Ilag',
@@ -88,6 +122,10 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
           'Tacligan',
           'Poblacion',
           'Caagutayan',
+        ],
+        sex: [
+          'Male',
+          'Female',
         ],
         doctors: [
           'Dr. Kwak Kwak',

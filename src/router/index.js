@@ -14,6 +14,7 @@ import StaffService from '../views/StaffPanel/StaffService.vue'
 import Pending_Appointments from '../views/StaffPanel/Pending_Appointments.vue'
 import Cancel_Message from '../views/StaffPanel/Cancel_Message.vue'
 import Add_Appointment from '../views/StaffPanel/Add_Appointment.vue'
+import Medicine from '../views/StaffPanel/Medicine.vue'
 
 import AdminDashboard from '../views/AdminPanel/AdminDashboard.vue'
 import AdminAppointment from '../views/AdminPanel/AdminAppointment.vue'
@@ -23,6 +24,12 @@ import Patients from '../views/AdminPanel/Patients.vue'
 import Barangays from '../views/AdminPanel/Barangays.vue'
 import Staffs from '../views/AdminPanel/Staffs.vue'
 import Settings from '../views/AdminPanel/Settings.vue'
+
+import Doctor_Dashboard from '../views/DoctorPanel/Doctor_Dashboard.vue'
+import Doctor_Appointment from '../views/DoctorPanel/Doctor_Appointment.vue'
+import Doctor_Patient from '../views/DoctorPanel/Doctor_Patient.vue'
+import Doctor_Medicine from '../views/DoctorPanel/Doctor_Medicine.vue'
+
 
 const routes = [
   {
@@ -91,6 +98,10 @@ const routes = [
     name: 'Add_Appointment',
     component: Add_Appointment
   },
+  { path: '/staff-dashboard/inventory/medicine',
+    name: 'Medicine',
+    component: Medicine
+  },
   { path: '/admin-dashboard',
     name: 'admin dashboard',
     component: AdminDashboard 
@@ -122,6 +133,22 @@ const routes = [
   { path: '/admin-dashboard/doctor',
     name: 'admin doctor',
     component: Doctors 
+  },
+  { path: '/doctor-dashboard',
+    name: 'Doctor_Dashboard',
+    component: Doctor_Dashboard 
+  },
+  { path: '/doctor-dashboard/appointment',
+    name: 'Doctor_Appointment',
+    component: Doctor_Appointment 
+  },
+  { path: '/doctor-dashboard/patient',
+    name: 'Doctor_Patient',
+    component: Doctor_Patient 
+  },
+  { path: '/doctor-dashboard/inventory/medicine',
+    name: 'Doctor_Medicine',
+    component: Doctor_Medicine 
   },
 ]
 
