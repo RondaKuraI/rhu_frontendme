@@ -22,7 +22,7 @@
 
               <v-card-text>
                 <v-container>
-                  <v-form>
+                  <v-form @submit.prevent="save">
                     <h3 class="mb-2">Personal Information</h3>       
                     <v-row>
                       <v-col cols="12" sm="6" md="4">
@@ -73,7 +73,7 @@
                     <v-btn color="red-accent-4" variant="elevated" @click="dialog = false">
                       Close
                     </v-btn>
-                    <v-btn color="teal-darken-4" variant="elevated" @click="submit" >
+                    <v-btn color="teal-darken-4" variant="elevated" @click="save" >
                       Save
                     </v-btn>
                   </v-card-actions>
@@ -96,6 +96,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
   export default {
       name: 'Records',
@@ -113,6 +114,8 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
         selectedBarangay: null,
         date: '',
         time: '',
+        selectedDoctor: null,
+        reason: '',
         dialog: false,
         barangay: [
           'Bigaan',
@@ -133,5 +136,27 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
         loaded: false,
         loading: false,
       }),
+      methods: {
+        async save(){
+          try {
+            const ins = await axios.post('save', {
+              first_name: this.first_name,
+              middle_name: this.middle_name,
+              last_name: this.last_name,
+              birthdate: this.birthdate,
+              age: this.age,
+              selectedSex: this.selectedSex,
+              contact_num: this.contact_num,
+              selectedBarangay: this.selectedBarangay,
+              date: this.date,
+              time: this.time,
+              selectedDoctor: this.selectedDoctor,
+              reason: this.reason,
+            });
+          } catch (error) {
+            
+          }
+        }
+      }
     }
 </script>

@@ -69,7 +69,7 @@
                   <v-list-item-title>Change Password</v-list-item-title>
                 </v-list-item>
   
-                <v-list-item to="/" prepend-icon="mdi-account-outline">
+                <v-list-item @click="logout" to="/" prepend-icon="mdi-account-outline">
                   <v-list-item-title>Logout</v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -124,6 +124,18 @@ import { mergeProps } from 'vue'
           // Assuming you have a Vue Router instance named 'router'
           this.$router.push({ name: 'pending_appointments', params: { id: notification.title } });
         },
+        async logout() {
+            try {
+                // Clear authentication-related information
+                sessionStorage.removeItem("token");
+
+                // Redirect to the login page or any other desired page
+                router.push('/');
+            } catch (error) {
+                console.error("Error during logout:", error);
+                // Handle logout error if needed
+            }
+        }
       }
   }
   </script>

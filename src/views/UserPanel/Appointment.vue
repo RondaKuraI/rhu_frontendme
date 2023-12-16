@@ -9,7 +9,7 @@
           <v-data-table
             :headers="headers"
             :items="user_appointments"          
-            item-key="patient_name">
+            item-key="first_name">
 
             <!-- Custom slot for the 'status' column -->
             <template v-slot:item.status="{ item }">
@@ -37,8 +37,8 @@ import NavBar from '@/components/User/NavBar.vue';
       isDrawerOpen: true,
       dialog: false,
       headers: [
-      { title: 'Patient Name', align: 'start', sortable: false, key: 'patient_name' },
-      { title: 'Appointment Schedule', align: 'start', key: 'schedule' },
+      { title: 'Patient Name', align: 'start', sortable: false, key: 'first_name' },
+      { title: 'Appointment Schedule', align: 'start', key: 'date' },
       { title: 'Doctor', align: 'start', key: 'doctor' },
       { title: 'Reason', align: 'start', key: 'reason' },
       { title: 'Status', 
@@ -58,7 +58,7 @@ import NavBar from '@/components/User/NavBar.vue';
     methods: {
       async getUser_Appointments(){
         try {
-          const user_app = await axios.get('getData');
+          const user_app = await axios.get('getAppointment_Data');
           this.user_appointments = user_app.data;
         } catch (error) {
           console.log(error);
