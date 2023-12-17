@@ -60,11 +60,11 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
     ],
     appointments: [
       {
-        id: 'Fern',
-        schedule: 'Low',
-        reason: '20cm',
-        status: 'Yes',
-        actions: {},
+        // id: 'Fern',
+        // schedule: 'Low',
+        // reason: '20cm',
+        // status: 'Yes',
+        // actions: {},
         
       },
     ],

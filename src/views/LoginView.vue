@@ -93,7 +93,7 @@ export default {
                         router.push('/dashboard');
                         break;
                     default:
-                        router.push('/DefaultPanel');
+                        router.push('/doctor-dashboard');
                 }
             }
         } catch (error) {

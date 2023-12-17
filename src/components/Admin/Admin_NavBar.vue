@@ -3,24 +3,24 @@
     <v-toolbar app color="teal-darken-4" scroll-behavior="inverted">
       <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <span class="font-weight-light">Medi</span>
-        <span>Cord</span>
+        <!-- <span class="font-weight-light">Medi</span>
+        <span>Cord</span> -->
       </v-toolbar-title>
 
       <template #append>
-        <v-btn icon class="mr-2">
+        <!-- <v-btn icon class="mr-2">
           <v-badge dot color="error">
           <v-icon icon="mdi-bell-outline"></v-icon>
         </v-badge>
-        </v-btn>
+        </v-btn> -->
         
         
         <v-menu>
           <template #activator="{props}">
-            <span class="font-weight-light pa-2">Admin</span>
-            <v-avatar v-bind="props">
-              <v-img cover src="https://i.pinimg.com/564x/d4/59/89/d4598938659abfc00f2688aacb20702b.jpg"></v-img>
-            </v-avatar>
+            <span class="font-weight-light pa-2">Hello, Admin!</span>
+            <v-avatar v-bind="props" color="teal-accent-1" icon="mdi-account">
+                <v-img cover src="hhttps://i.pinimg.com/564x/d4/59/89/d4598938659abfc00f2688aacb20702b.jpg"></v-img>
+              </v-avatar>
           </template>
 
           <v-card min-width="200px">
@@ -66,7 +66,7 @@
             <template #activator="{props}">
               <v-list-item v-bind="props" prepend-icon="mdi-folder">Inventory</v-list-item>
             </template>
-            <v-list-item to="/" prepend-icon="mdi-pill">Medicine</v-list-item>
+            <v-list-item to="/admin-dashboard/inventory/medicine" prepend-icon="mdi-pill">Medicine</v-list-item>
           </v-list-group>
         </v-list>
 

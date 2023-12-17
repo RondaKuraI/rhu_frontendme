@@ -96,7 +96,6 @@ export default {
             'admin',
             'user',
             'staff',
-            'doctor',
         ],
         message: '',
     }),

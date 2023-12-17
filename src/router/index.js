@@ -24,6 +24,7 @@ import Patients from '../views/AdminPanel/Patients.vue'
 import Barangays from '../views/AdminPanel/Barangays.vue'
 import Staffs from '../views/AdminPanel/Staffs.vue'
 import Settings from '../views/AdminPanel/Settings.vue'
+import Medicines from '../views/AdminPanel/Medicines.vue'
 
 import Doctor_Dashboard from '../views/DoctorPanel/Doctor_Dashboard.vue'
 import Doctor_Appointment from '../views/DoctorPanel/Doctor_Appointment.vue'
@@ -134,6 +135,10 @@ const routes = [
   { path: '/admin-dashboard/doctor',
     name: 'admin doctor',
     component: Doctors 
+  },
+  { path: '/admin-dashboard/inventory/medicine',
+    name: 'Medicines',
+    component: Medicines 
   },
   { path: '/doctor-dashboard',
     name: 'Doctor_Dashboard',
