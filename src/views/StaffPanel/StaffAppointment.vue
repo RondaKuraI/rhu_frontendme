@@ -46,8 +46,8 @@ import Staff_NavBar from '@/components/Staff/Staff_NavBar.vue'
           loaded: false,
           loading: false,
           headers: [
-          { title: 'Patient Name', align: 'start', sortable: false, key: 'patient_name' },
-          { title: 'Appointment Schedule', key: 'schedule' },
+          { title: 'Patient Name', align: 'start', sortable: false, key: 'first_name' },
+          { title: 'Appointment Schedule', key: 'date' },
           { title: 'Doctor', key: 'doctor' },
           { title: 'Reason', key: 'reason' },
           { title: 'Status', key: 'status' },
@@ -69,7 +69,7 @@ import Staff_NavBar from '@/components/Staff/Staff_NavBar.vue'
 
           async getPatient_Records() {
               try{
-                  const patient_rec = await axios.get('getData');
+                  const patient_rec = await axios.get('getAllAppointment_Data');
                   this.patient_records = patient_rec.data;
               } catch(error){
                   console.error('Error fetching patient records:', error);

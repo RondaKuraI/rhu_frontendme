@@ -8,7 +8,7 @@
         <v-card elevation="10" class="mt-2">
           <v-data-table
             :headers="headers"
-            :items="user_appointments"          
+            :items="user_appointments" 
             item-key="first_name">
 
             <!-- Custom slot for the 'status' column -->
@@ -45,6 +45,7 @@ import NavBar from '@/components/User/NavBar.vue';
         align: 'start', 
         key: 'status' },
       ],
+      email: 'mutsumi@gmail.com',
     // appointment: [
     //   { pName: 'Fern',
     //     schedule: '',
@@ -53,12 +54,12 @@ import NavBar from '@/components/User/NavBar.vue';
     // ]
     }),
     created() {
-      this.getUser_Appointments();
+      this.getUser_Appointments(this.email);
     },
     methods: {
-      async getUser_Appointments(){
+      async getUser_Appointments(email){
         try {
-          const user_app = await axios.get('getAppointment_Data');
+          const user_app = await axios.get(`getAppointment_Data/${email}`);
           this.user_appointments = user_app.data;
         } catch (error) {
           console.log(error);

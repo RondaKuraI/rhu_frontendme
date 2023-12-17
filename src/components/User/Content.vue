@@ -28,24 +28,19 @@
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field v-model="first_name" label="First Name*" required variant="solo-filled" density="comfortable"></v-text-field>        
                         <v-text-field v-model="birthdate" label="Birthdate" required variant="solo-filled" density="comfortable" type="date"></v-text-field>                                                                          
+                        <v-text-field v-model="email" label="Email*" required variant="solo-filled" density="comfortable"></v-text-field>                                                                          
                       </v-col>
 
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field v-model="middle_name" label="Middle Name*" required variant="solo-filled" density="comfortable"></v-text-field>
-                        <v-text-field v-model="age" label="Age" required variant="solo-filled" density="comfortable"></v-text-field>   
+                        <v-text-field v-model="age" label="Age" required variant="solo-filled" density="comfortable"></v-text-field>
+                        <v-text-field v-model="contact_num" label="Contact No." required variant="solo-filled" density="comfortable"></v-text-field>
                       </v-col>
   
                       <v-col cols="12" sm="6" md="4">
                         <v-text-field v-model="last_name" label="Last Name*" required variant="solo-filled" density="comfortable"></v-text-field>
-                        <v-select v-model="selectedSex" :items="sex" density="comfortable" label="Sex" variant="solo-filled"></v-select>
-                      </v-col>
-
-                      <v-col cols="12" sm="6" md="6">
-                        <v-text-field v-model="contact_num" label="Contact No." required variant="solo-filled" density="comfortable"></v-text-field>
-                      </v-col>
-  
-                      <v-col cols="12" sm="6" md="6">
-                        <v-select v-model="selectedBarangay" :items="barangay" density="comfortable" label="Barangay" variant="solo-filled"></v-select>
+                        <v-select v-model="sex" :items="sexs" density="comfortable" label="Sex" variant="solo-filled"></v-select>
+                        <v-select v-model="barangay" :items="barangays" density="comfortable" label="Barangay" variant="solo-filled"></v-select>
                       </v-col>
 
                       
@@ -59,7 +54,7 @@
                         <v-text-field v-model="time" label="Time of Appointment" required variant="solo-filled" density="comfortable" type="time"></v-text-field>
                       </v-col>
                       <v-col cols="12" sm="6" md="4">
-                        <v-select v-model="selectedDoctor" label="Doctor" :items="doctors" density="comfortable" variant="solo-filled"></v-select>
+                        <v-select v-model="doctor" label="Doctor" :items="doctors" density="comfortable" variant="solo-filled"></v-select>
                       </v-col>
 
                       <v-col cols="12" sm="6" md="12">
@@ -109,15 +104,16 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
         last_name: '',
         birthdate: '',
         age: '',
-        selectedSex: null,
+        sex: 'Male',
+        email: '',
         contact_num: '',
-        selectedBarangay: null,
+        barangay: 'Bigaan',
         date: '',
         time: '',
-        selectedDoctor: null,
+        doctor: 'Dr. Kwak Kwak',
         reason: '',
         dialog: false,
-        barangay: [
+        barangays: [
           'Bigaan',
           'Calangatan',
           'Ilag',
@@ -126,7 +122,7 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
           'Poblacion',
           'Caagutayan',
         ],
-        sex: [
+        sexs: [
           'Male',
           'Female',
         ],
@@ -139,24 +135,49 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
       methods: {
         async save(){
           try {
-            const ins = await axios.post('save', {
+            const response = await axios.post('save', {
               first_name: this.first_name,
               middle_name: this.middle_name,
               last_name: this.last_name,
               birthdate: this.birthdate,
               age: this.age,
-              selectedSex: this.selectedSex,
+              sex: this.sex,
+              email: this.email,
               contact_num: this.contact_num,
-              selectedBarangay: this.selectedBarangay,
+              barangay: this.barangay,
               date: this.date,
               time: this.time,
-              selectedDoctor: this.selectedDoctor,
+              doctor: this.doctor,
               reason: this.reason,
             });
-          } catch (error) {
+            // Assuming the server responds with a success message
+            console.log('Save successful:', response.data);
             
+            // Optionally, you can reset the form fields or close the dialog
+            this.resetForm();
+          } catch (error) {
+            // Log the detailed error information to the console
+            console.error('Save failed:', error);
           }
-        }
+        },
+        resetForm() {
+          // Reset form fields or close the dialog
+          this.first_name = '';
+          this.middle_name = '';
+          this.last_name = '';
+          this.birthdate = '';
+          this.age = '';
+          this.sex = '';
+          this.email = '';
+          this.contact_num = '';
+          this.barangay = '';
+          this.date = '';
+          this.time = '';
+          this.doctor = '';
+          this.reason = '';
+          
+          this.dialog = false;
+        },
       }
     }
 </script>

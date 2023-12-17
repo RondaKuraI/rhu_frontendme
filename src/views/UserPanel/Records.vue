@@ -65,6 +65,8 @@ import NavBar from '@/components/User/NavBar.vue';
             return 'green';
           case 'cancelled':
             return 'red';
+          case 'completed':
+            return 'green';
           default:
             return 'grey';
         }

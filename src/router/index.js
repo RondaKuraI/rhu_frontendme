@@ -60,7 +60,8 @@ const routes = [
   },
   { path: '/dashboard/appointment',
     name: 'appointment',
-    component: Appointment 
+    component: Appointment,
+    props: route => ({ userEmail: route.params.userEmail }),
   },
   { path: '/dashboard/records',
     name: 'records',

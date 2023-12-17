@@ -18,6 +18,7 @@
                                 prepend-inner-icon="mdi-account"
                                 variant="outlined"
                                 color="teal-darken-4"
+                                density="comfortable"
                             />
                             <v-text-field
                                 v-model="last_name"
@@ -28,6 +29,7 @@
                                 prepend-inner-icon="mdi-account"
                                 variant="outlined"
                                 color="teal-darken-4"
+                                density="comfortable"
                             />
                             <v-text-field
                                 v-model="email"
@@ -38,6 +40,7 @@
                                 prepend-inner-icon="mdi-email"
                                 variant="outlined"
                                 color="teal-darken-4"
+                                density="comfortable"
                             />
                             <v-text-field
                                 v-model="password"
@@ -48,6 +51,7 @@
                                 prepend-inner-icon="mdi-key"
                                 variant="outlined"
                                 color="teal-darken-4"
+                                density="comfortable"
                                 :append-inner-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
                                 @click:append-inner="passwordShow = !passwordShow"
                             />
@@ -60,9 +64,10 @@
                                 prepend-inner-icon="mdi-key"
                                 variant="outlined"
                                 color="teal-darken-4"
+                                density="comfortable"
                             ></v-text-field>
                             <!-- Role selection dropdown -->
-                            <v-select v-model="role" :items="roles" label="Role" variant="outlined" color="teal-darken-4"></v-select>
+                            <v-select v-model="role" :items="roles" label="Role" variant="outlined" color="teal-darken-4" density="comfortable"></v-select>
                             <v-btn type="submit" block color="teal-darken-4">Register</v-btn>
                         </v-card-text>
                         <h4> Already have an account?
@@ -129,6 +134,7 @@ export default {
                         this.$router.push('/');
                     } else {
                         this.message = 'Registration Failed';
+                        console.error('Registration Failed', error);
                     }
                 } catch (error) {
                     console.error('There was an error during registration', error);
