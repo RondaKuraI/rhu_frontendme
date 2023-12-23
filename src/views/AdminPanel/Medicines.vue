@@ -3,8 +3,7 @@
       <Admin_NavBar />
   
       <v-container>
-        <h2>Medicines</h2>
-        <v-form>
+              <h2>Medicines</h2>
               <v-dialog v-model="dialog" width="500" transition="dialog-top-transition">
                 <template v-slot:activator="{props}">
                   <v-btn color="orange" size="small" v-bind="props" class="mt-2 mb-2" prepend-icon="mdi-plus">
@@ -14,53 +13,44 @@
                 <v-card>
                   <v-toolbar color="orange">
                     <v-card-title>
-                      <span>Add Medicine</span>
+                      <!-- <span>Add Medicine</span> -->
+                      <span>{{formTitle}}</span>
                     </v-card-title>
                   </v-toolbar>
   
                   <v-card-text>       
                     <v-container density="comfortable">
-                      <v-form>
                     <v-row>
                       <v-col cols="12" sm="6" md="12">
-                        <v-text-field label="Medicine Name" required variant="solo-filled" density="comfortable" v-model="med_name"></v-text-field>
-                      </v-col>
-
-                      <v-col cols="12" sm="6" md="12">
-                        <v-select :items="med_type" density="comfortable" label="Medicine Type" variant="solo-filled" v-model="selected_med_type"></v-select>
-                      </v-col>
-  
-                      <v-col cols="12" sm="6" md="12">
-                        <v-text-field label="Amount" required variant="solo-filled" density="comfortable" v-model="amount"></v-text-field>
-                      </v-col>
-  
-                      <v-col cols="12" sm="6" md="12">
-                        <v-text-field label="Expiry Date" required variant="solo-filled" density="comfortable" v-model="expiry" type="date"></v-text-field>
+                        <v-text-field v-model="editedItem.ndc" label="National Drug Code" required variant="solo-filled" density="comfortable"></v-text-field> 
+                        <v-text-field v-model="editedItem.med_name" label="Medicine Name" required variant="solo-filled" density="comfortable"></v-text-field>
+                        <v-select v-model="editedItem.med_type" :items="med_types" density="comfortable" label="Medicine Type" variant="solo-filled"></v-select>
+                        <v-text-field v-model="editedItem.stocks" label="Stocks" required variant="solo-filled" density="comfortable" ></v-text-field>
+                        <v-text-field  v-model="editedItem.expiry" label="Expiry Date" required variant="solo-filled" density="comfortable" type="date"></v-text-field>
                       </v-col>
                     </v-row>
-                  </v-form>
                     </v-container>
                   </v-card-text>
+                  
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="red-accent-4" variant="elevated" @click="dialog = false">
+                    <v-btn color="red-accent-4" variant="elevated" @click="close">
                       Close
                     </v-btn>
-                    <v-btn color="teal-darken-4" variant="elevated" @click="dialog = false">
+                    <v-btn color="teal-darken-4" variant="elevated" @click="save">
                       Save
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-dialog>
-            </v-form>
-  
   
           <!-- List of Medicines -->
           <v-card elevation="10" class="mt-2">        
             <v-data-table
               :headers="headers"
-              :items="medicine"
-              item-key="id">
+              :items="desserts"
+              :sort-by="[{ key: 'ndc', order: 'asc' }]"
+              >
               <template v-slot:top>
                 <v-toolbar color="teal-accent-4">
                   <v-toolbar-title></v-toolbar-title>
@@ -70,17 +60,44 @@
                   <v-text-field :loading="loading" density="compact" variant="solo" label="Search" append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick" class="mr-2"></v-text-field>
                 </v-toolbar>
               </template>
-              <!-- <template v-slot:item.actions="{ item }">
-                <v-btn class="me-2" color="blue">Edit</v-btn>
-                <v-btn color="red">Delete</v-btn>
-              </template> -->
-              <template v-slot:item.action="{ item }">
+              <!-- <template v-slot:item.action="{ item }">
                     <v-btn density="comfortable" color="teal-darken-4" class="me-2">View</v-btn>
                     <v-btn density="comfortable" color="orange" class="me-2" to="/staff-dashboard/add_appointment">Add Appointment</v-btn>
-                </template>
+                </template> -->
+                
+
+              <template v-slot:item.actions="{ item }">
+                    <v-btn density="comfortable" color="teal-darken-4" class="me-2" @click="editItem(item)">Edit</v-btn>
+                    <v-btn density="comfortable" color="orange" class="me-2" @click="openStocksModal(item)">Add</v-btn>
+              </template>
+
+              <template v-slot:no-data>
+                <v-btn color="primary" @click="initialize">
+                  Reset
+                </v-btn>
+              </template>
+
             </v-data-table>
+            <v-dialog v-model="stocksModal" max-width="400">
+              <v-card>
+                <v-card-title>Add Stocks</v-card-title>
+                <v-card-text>
+                  <!-- Your stocks input field and other necessary fields go here -->
+                  <v-text-field v-model="stocksToAdd" label="Stocks"></v-text-field>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn variant="elevated" color="red-accent-4" @click="closeStocksModal">Close</v-btn>
+                  <v-btn variant="elevated" color="teal-darken-4" @click="addStocks">Add</v-btn>
+                  <!-- <router-link :to="{ name: 'History', params: { ndc: item.ndc } }">
+                    <v-icon size="small">mdi-history</v-icon>
+                  </router-link> -->
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
           </v-card>
       </v-container>
+
     </div>
   </template>
   
@@ -93,10 +110,10 @@
             Admin_NavBar,
         },
         data: () => ({
-          patient_records: [],
-          selected_med_type: '',
           dialog: false,
-          med_type: [
+          stocksModal: false,
+          med_type: 'Tablets',
+          med_types: [
             'Tablets',
             'Capsules',
             'Syrups',
@@ -105,27 +122,46 @@
           loaded: false,
           loading: false,
           headers: [
-            // { title: 'First Name', key: 'first_name' },
-            // { title: 'Middle Name', key: 'middle_name' },
-            // { title: 'Last Name', key: 'last_name' },
-            { title: 'Medicine Name', key: 'full_name', sortable: false, },
-            { title: 'Medicine Type', key: 'contact_num', },
-            { title: 'Stock Available', key: 'brgy', },
-            { title: 'Expiry Date', key: 'brgy', },
-            { title: 'Status', key: 'brgy', },
-            { title: 'Action', key: 'action', },
+            { title: 'NDC', key: 'ndc',  },
+            { title: 'Medicine Name', key: 'med_name', sortable: false, },
+            { title: 'Medicine Type', key: 'med_type', },
+            { title: 'Stock Available', key: 'stocks', },
+            { title: 'Expiry Date', key: 'expiry_date', },
+            { title: 'Status', key: 'status', },
+            { title: 'Actions', key: 'actions', },
           ],
+          desserts: [],
+          editedIndex: -1,
+          editedItem: {
+            ndc: '',
+            med_name: '',
+            med_type: null,
+            stocks: 0,
+            expiry_date: null,
+            status: '',
+          },
+          defaultItem: {
+            ndc: '',
+            med_name: '',
+            med_type: null,
+            stocks: 0,
+            expiry_date: null,
+            status: '',
+          },
         }),
         computed: {
-          patient_full_name() {
-            return this.patient_records.map(patient => ({
-              ...patient,
-              full_name: `${patient.first_name} ${patient.last_name}`,
-            }));
+          formTitle () {
+            return this.editedIndex === -1 ? 'Add Medicine' : 'Edit Item'
           }
         },
-        created() {
-          this.getPatient_Records();
+
+        watch: {
+          dialog (val) {
+            val || this.close()
+          }
+        },
+        created () {
+          this.initialize()
         },
         methods: {
           onClick () {
@@ -136,14 +172,63 @@
               this.loaded = true
             }, 2000)
           },
-  
-          async getPatient_Records(){
-            try {
-              const patient_rec = await axios.get('getpatrecData');
-              this.patient_records = patient_rec.data;
-            } catch(error){
-              console.log(error);
+
+          openStocksModal(item){
+            this.selectedProduct = item;
+            this.stocksToAdd = 0;
+            this.stocksModal = true;
+          },
+
+          closeStocksModal() {
+            this.selectedProduct = null;
+            this.stocksToAdd = 0;
+            this.stocksModal = false;
+          },
+
+          async addStocks() {
+            const updatedProduct = { ...this.selectedProduct };
+            updatedProduct.stocks += parseInt(this.stocksToAdd);
+            await axios.post('api/updateStocks', {
+              ndc: updatedProduct.ndc,
+              stocks: this.stocksToAdd,
+            });
+            const index = this.desserts.findIndex((product) => product.ndc === updatedProduct.ndc);
+            this.initialize();
+            this.closeStocksModal();
+          },
+
+          async initialize () {
+            const data = await axios.get('api/getMedicines');
+            this.desserts = data.data;
+          },
+
+          editItem (item) {
+            this.editedIndex = this.desserts.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialog = true
+          },
+
+          close () {
+            this.dialog = false
+            this.$nextTick(() => {
+              this.editedItem = Object.assign({}, this.defaultItem)
+              this.editedIndex = -1
+            })
+          },
+
+          async save () {
+            if (this.editedIndex > -1) {
+              // edit
+              const response = await axios.put(`api/updateMedicine/${this.editedItem.id}`, this.editedItem);
+              console.log(response.data);
+              Object.assign(this.desserts[this.editedIndex], this.editedItem)
+            } else {
+              
+              const response = await axios.post('api/newmedicine', this.editedItem);
+              console.log(response.data);
+              this.desserts.push(this.editedItem)
             }
+            this.close()
           },
         },
     }
