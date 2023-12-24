@@ -56,13 +56,13 @@
   
             <v-card min-width="200px">
               <v-list :lines="false" density="compact" nav>
-                <v-list-item to="/dashboard/profile" prepend-icon="mdi-heart-outline">
+                <!-- <v-list-item to="/dashboard/profile" prepend-icon="mdi-heart-outline">
                   <v-list-item-title>Profile</v-list-item-title>
                 </v-list-item>
   
                 <v-list-item to="/settings" prepend-icon="mdi-cog-outline">
                   <v-list-item-title>Change Password</v-list-item-title>
-                </v-list-item>
+                </v-list-item> -->
   
                 <v-list-item @click="logout" to="/" prepend-icon="mdi-account-outline">
                   <v-list-item-title>Logout</v-list-item-title>

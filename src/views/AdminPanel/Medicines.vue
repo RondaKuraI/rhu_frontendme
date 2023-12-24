@@ -26,7 +26,7 @@
                         <v-text-field v-model="editedItem.med_name" label="Medicine Name" required variant="solo-filled" density="comfortable"></v-text-field>
                         <v-select v-model="editedItem.med_type" :items="med_types" density="comfortable" label="Medicine Type" variant="solo-filled"></v-select>
                         <v-text-field v-model="editedItem.stocks" label="Stocks" required variant="solo-filled" density="comfortable" ></v-text-field>
-                        <v-text-field  v-model="editedItem.expiry" label="Expiry Date" required variant="solo-filled" density="comfortable" type="date"></v-text-field>
+                        <v-text-field  v-model="editedItem.expiry_date" label="Expiry Date" required variant="solo-filled" density="comfortable" type="date"></v-text-field>
                       </v-col>
                     </v-row>
                     </v-container>
@@ -69,6 +69,9 @@
               <template v-slot:item.actions="{ item }">
                     <v-btn density="comfortable" color="teal-darken-4" class="me-2" @click="editItem(item)">Edit</v-btn>
                     <v-btn density="comfortable" color="orange" class="me-2" @click="openStocksModal(item)">Add</v-btn>
+                    <router-link :to="{ name: 'History', params: { ndc: item.ndc } }">
+                      <v-icon size="small">mdi-history</v-icon>
+                    </router-link>
               </template>
 
               <template v-slot:no-data>
@@ -89,9 +92,7 @@
                   <v-spacer></v-spacer>
                   <v-btn variant="elevated" color="red-accent-4" @click="closeStocksModal">Close</v-btn>
                   <v-btn variant="elevated" color="teal-darken-4" @click="addStocks">Add</v-btn>
-                  <!-- <router-link :to="{ name: 'History', params: { ndc: item.ndc } }">
-                    <v-icon size="small">mdi-history</v-icon>
-                  </router-link> -->
+                  
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -105,13 +106,17 @@
   import axios from 'axios';
   import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
     export default {
-        name: 'StaffPatient',
+        name: 'Medicines',
         components: {
             Admin_NavBar,
         },
         data: () => ({
           dialog: false,
           stocksModal: false,
+          selectedProduct: null,
+          stocksToAdd: 0,
+          search: '',
+          dialogDelete: false,
           med_type: 'Tablets',
           med_types: [
             'Tablets',
@@ -158,8 +163,12 @@
         watch: {
           dialog (val) {
             val || this.close()
-          }
+          },
+          dialogDelete (val) {
+            val || this.closeDelete()
+          },
         },
+
         created () {
           this.initialize()
         },
@@ -208,8 +217,27 @@
             this.dialog = true
           },
 
+          deleteItem (item) {
+            this.editedIndex = this.desserts.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialogDelete = true
+          },
+
+          deleteItemConfirm () {
+            this.desserts.splice(this.editedIndex, 1)
+            this.closeDelete()
+          },
+
           close () {
             this.dialog = false
+            this.$nextTick(() => {
+              this.editedItem = Object.assign({}, this.defaultItem)
+              this.editedIndex = -1
+            })
+          },
+
+          closeDelete () {
+            this.dialogDelete = false
             this.$nextTick(() => {
               this.editedItem = Object.assign({}, this.defaultItem)
               this.editedIndex = -1
