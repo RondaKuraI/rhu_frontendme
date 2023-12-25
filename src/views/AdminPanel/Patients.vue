@@ -56,12 +56,11 @@
               </v-card>
             </v-dialog>
 
-        <!-- List of Medicines -->
         <v-card elevation="10" class="mt-2">        
           <v-data-table
             :headers="headers"
             :items="desserts"
-            :sort-by="[{ key: 'ndc', order: 'asc' }]"
+            :sort-by="[{ key: 'id', order: 'asc' }]"
             >
             <template v-slot:top>
               <v-toolbar color="teal-accent-4">
@@ -225,7 +224,7 @@ import Admin_NavBar from '@/components/Admin/Admin_NavBar.vue';
         async save () {
           if (this.editedIndex > -1) {
             // edit
-            const response = await axios.put(`api/updateMedicine/${this.editedItem.id}`, this.editedItem);
+            const response = await axios.put(`api/updatePatient/${this.editedItem.id}`, this.editedItem);
             console.log(response.data);
             Object.assign(this.desserts[this.editedIndex], this.editedItem)
           } else {
