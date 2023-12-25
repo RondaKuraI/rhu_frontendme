@@ -119,9 +119,9 @@
           dialogDelete: false,
           med_type: 'Tablets',
           med_types: [
-            'Tablets',
-            'Capsules',
-            'Syrups',
+            'Tablet',
+            'Capsule',
+            'Syrup',
             'Drops',
           ],
           loaded: false,

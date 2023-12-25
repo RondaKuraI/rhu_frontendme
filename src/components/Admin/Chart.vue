@@ -27,10 +27,10 @@
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Paracetamol', 'Ibuprofen', 'Loperamide', 'Mebendazole', 'Cetirizine', 'Stresstabs'],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'No. of Medicines',
+                    data: [1350, 1500, 1500, 1700, 2000, 2500],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.7)',
                         'rgba(54, 162, 235, 0.7)',

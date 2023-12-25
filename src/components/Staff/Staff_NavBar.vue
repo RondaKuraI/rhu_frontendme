@@ -109,7 +109,7 @@ import { mergeProps } from 'vue'
       data: () => ({
           isDrawerOpen: true,
           notifications: [
-            {title: 'Mutsumi', subtitle: 'Reason: ubo'},
+            {title: 'Mutsumi', subtitle: 'Reason: cough'},
             // {title: 'Gojo', subtitle: 'Manananggal '},
           ],
       }),
